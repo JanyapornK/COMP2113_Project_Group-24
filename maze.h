@@ -10,7 +10,7 @@ public:
   Maze(const vector<string>& layout);           // Constructor to load a fixed maze
   void play();                                  // Maze gameplay                             
   void displayMaze() const;                     // Display the current maze
-  bool movePlayer(char direction);              // Move the player (w, a, s, d)
+  bool move(char direction);              // Move the player (w, a, s, d)
   bool isExitReached() const;                   // Check if the player has reached the exit
 
 private:
