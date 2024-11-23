@@ -14,3 +14,11 @@ void Maze::displayMaze() const {
 bool Maze::move(char direction) {
   return false;
 }
+
+bool Maze::isExitReached() const {
+  return false;
+}
+
+void Maze::play() {
+  return;
+}
