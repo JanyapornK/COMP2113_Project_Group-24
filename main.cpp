@@ -36,12 +36,25 @@ int main()
             default:
                 cout << "Invalid input!" << endl;
         }
-        choice = meue();
+        choice = menu();
     }
     cout << "Hope you enjoyed the game!" << endl;
 
     return 0;
 }
+
+
+
+    // Scenario 1: Solve the maze to enter the professor's office
+    cout << "You must solve the maze to enter the professor's office!" << endl;
+    Maze maze1(mazeToEnterOffice);
+    maze1.play();
+
+    // Scenario 2: Solve the maze to escape after stealing the exam paper
+    cout << "You must solve the maze to escape the building!" << endl;
+    Maze maze2(mazeToEscapeOffice);
+    maze2.play();
+
         
     
     
