@@ -31,6 +31,17 @@ int main()
         {
             case '1':
                 //choose the character
+
+                // Scenario 1: Solve the maze to enter the professor's office
+                cout << "You must solve the maze to enter the professor's office!" << endl;
+                Maze mazeEnter(1);
+                mazeEnter.play();
+
+                // Scenario 2: Solve the maze to escape after stealing the exam paper
+                cout << "You must solve the maze to escape the building!" << endl;
+                Maze mazeOut(2);
+                mazeOut.play();
+            
             case '2':
                 //load the previous saved game progress
             default:
@@ -43,18 +54,3 @@ int main()
     return 0;
 }
 
-
-
-    // Scenario 1: Solve the maze to enter the professor's office
-    cout << "You must solve the maze to enter the professor's office!" << endl;
-    Maze maze1(mazeToEnterOffice);
-    maze1.play();
-
-    // Scenario 2: Solve the maze to escape after stealing the exam paper
-    cout << "You must solve the maze to escape the building!" << endl;
-    Maze maze2(mazeToEscapeOffice);
-    maze2.play();
-
-        
-    
-    
