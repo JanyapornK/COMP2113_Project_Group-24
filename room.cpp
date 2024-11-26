@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cstdlib>
+#include <vector>
 using namespace std;
 
 struct Room{
@@ -9,13 +10,15 @@ bool arrived;
 };
 
 int main(){
+vector <Room> places;
 struct Room canteen;
 struct Room lib;
 struct Room classrm;
 struct Room commonrm;
 
+
 srand((unsigned)time(NULL));
-int random=1+(rand()%3);
+int random=(rand()%4);
 
 
 return 0;
