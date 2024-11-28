@@ -1,7 +1,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <vector>
-
+#include "room.h"
 using namespace std;
 
 struct Room{
