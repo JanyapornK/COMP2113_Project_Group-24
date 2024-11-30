@@ -38,15 +38,6 @@ Maze::Maze(int scenario){
       "############",
     };
   }
-  
-  for (size_t i = 0; i < mazeLayout.size(); ++i) {
-    for (size_t j = 0; j < mazeLayout[i].size(); ++j) {
-      if (mazeLayout[i][j] == 'P') {
-        playerX = i;
-        playerY = j;
-      }
-    }
-  }
   return;
 }
 
