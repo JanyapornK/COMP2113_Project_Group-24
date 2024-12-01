@@ -10,7 +10,7 @@ Maze::Maze(int scenario){
       "###########",
       "#     # # #",
       "###   # # #",
-      "S   #   # #",
+      "P   #   # #",
       "######  # #",
       "#       # #",
       "# ####### #",
@@ -18,10 +18,14 @@ Maze::Maze(int scenario){
       "# ##      E",
       "##########F"
     };
+    // Set the player's starting position ('P')
+    playerR = 3;
+    playerC = 0;
+    return;
   } else if (scenario = 2) {
     mazeLayout = {
       "############",
-      "S          #",
+      "P          #",
       "# # #####  #",
       "# #     #  #",
       "# # ### #  #",
@@ -37,8 +41,11 @@ Maze::Maze(int scenario){
       "#          E",
       "############",
     };
+    // Set the player's starting position ('P')
+    playerR = 1;
+    playerC = 0;
+    return;
   }
-  return;
 }
 
 void Maze::displayMaze() const {
@@ -48,13 +55,44 @@ void Maze::displayMaze() const {
 }
 
 bool Maze::move(char direction) {
-  return false;
+  int newR = playerR, newC = playerC;
+  // Calculate new position based on direction
+  switch (direction) {
+    case 'w': newR--; break;  // Move up
+    case 'a': newC--; break;  // Move left
+    case 's': newR++; break;  // Move down
+    case 'd': newC++; break;  // Move right
+    default: return false;    // Invalid input
+  }
+  if (newR >= 0 && newR < mazeLayout.size() && newC >= 0 && newC < mazeLayout[newR].size()) {
+    char targetCell = mazeLayout[newR][newC];
+    if (targetCell == ' ') {
+      // Update player's position
+      mazeLayout[playerR][playerC] = ' ';  // Clear old position
+      playerR = newR;
+      playerC = newC;
+      mazeLayout[playerR][playerC] = 'P';  // Mark new position
+      return true;
+    }
+  }
+  return false; // Invalid move
 }
 
 bool Maze::isExitReached() const {
-  return false;
+  return mazeLayout[playerR][playerC+1] == 'E';
 }
 
 void Maze::play() {
+  cout << "Welcome to the Maze! Use w (up), a (left), s (down), d (right) to move." << endl;
+  while (!isExitReached()) {
+    displayMaze();  // Show the maze
+    cout << "Enter your move: ";
+    char move;
+    cin >> move;
+    if (!movePlayer(move)) {
+      cout << "Invalid move! Try again." << endl;
+    }
+  }
+  cout << "Congratulations! You have reached the exit!" << endl;
   return;
 }
