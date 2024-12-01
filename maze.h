@@ -15,7 +15,7 @@ public:
 
 private:
   vector<string> mazeLayout;          // 2D representation of the maze
-  int playerX, playerY;               // Player's current position
+  int playerR, playerC;               // Player's current position
 };
 
 #endif
