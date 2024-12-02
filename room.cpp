@@ -64,7 +64,7 @@ while (true){
     /*battle
     if (win = true && place[0].key == true){
       break;}
-    else if (win = true && key == false){ 
+    else if (win = true && place[0].key == false){ 
       place[0].arrived = true;
       continue;}
     else if (win = false){ 
