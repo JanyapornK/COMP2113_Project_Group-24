@@ -54,17 +54,24 @@ int main(){
     places.push_back(r);
   }
 
-
+bool gameover = false;
 while (true){
   printChoices(places); //print rooms that is unarrived by user
   string input;
   cin>>input;
   transform(input.begin(), input.end(), input.begin(), tolower); 
   if (input=="canteen" && places[0].arrived==false){
-    //battle
-    //if win = true && key == true: break
-    //if win = false: continue (retry)
-    //if win = true && key == false: arrived = true, then rechoose
+    /*battle
+    if (win = true && place[0].key == true){
+      break;}
+    else if (win = true && key == false){ 
+      place[0].arrived = true;
+      continue;}
+    else if (win = false){ 
+      gameover=true;
+      cout<<"Ouch!! I was caught! (GAME OVER)"<<endl;
+      break;}
+      */
   } else if (input=="library" && places[1].arrived==false){
     //battle
   }else if (input=="classroom" && places[2].arrived==false){
@@ -75,7 +82,7 @@ while (true){
     cout<<"Maybe I should choose another place to go... (Re-enter a place)"<<endl; //re-choose
   }
 
-  
+  return gameover ? 1 : 0;
 }
     
 return 0;
