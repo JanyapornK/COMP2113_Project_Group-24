@@ -32,6 +32,8 @@ int main()
             case '1':
                 //choose the character
 
+                //go to room.cpp to find key
+                
                 // Scenario 1: Solve the maze to enter the professor's office
                 cout << "You must solve the maze to enter the professor's office!" << endl;
                 Maze mazeEnter(1);
