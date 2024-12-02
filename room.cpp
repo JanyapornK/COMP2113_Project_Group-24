@@ -35,7 +35,7 @@ void printChoices(vector <Room> places){
   }
 }
 
-int main(){
+int Rmain(){
   string name[]={"Canteen","Library","Classroom","Common room"};
   vector <Room> places; 
 
@@ -82,8 +82,7 @@ while (true){
     cout<<"Maybe I should choose another place to go... (Re-enter a place)"<<endl; //re-choose
   }
 
-  return gameover ? 1 : 0;
 }
     
-return 0;
+return gameover ? 1 : 0; // Return 1 if gameover
 }
