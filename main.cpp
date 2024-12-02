@@ -33,7 +33,7 @@ int main()
                 //choose the character
 
                 //go to room.cpp to find key
-                
+                Rmain();
                 // Scenario 1: Solve the maze to enter the professor's office
                 cout << "You must solve the maze to enter the professor's office!" << endl;
                 Maze mazeEnter(1);
