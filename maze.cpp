@@ -5,7 +5,7 @@ using namespace std;
 
 Maze::Maze(int scenario){
   // Define two fixed mazes for different parts of the game
-  if(scenario = 1){
+  if(scenario == 1){
     mazeLayout = {
       "###########",
       "#     # # #",
@@ -22,7 +22,7 @@ Maze::Maze(int scenario){
     playerR = 3;
     playerC = 0;
     return;
-  } else if (scenario = 2) {
+  } else if (scenario == 2) {
     mazeLayout = {
       "############",
       "P          #",
