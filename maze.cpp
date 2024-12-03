@@ -66,7 +66,7 @@ bool Maze::move(char direction) {
   }
   if (newR >= 0 && newR < mazeLayout.size() && newC >= 0 && newC < mazeLayout[newR].size()) {
     char targetCell = mazeLayout[newR][newC];
-    if (targetCell == ' ') {
+    if (targetCell == ' ' || targetCell == 'E') {
       // Update player's position
       mazeLayout[playerR][playerC] = ' ';  // Clear old position
       playerR = newR;
