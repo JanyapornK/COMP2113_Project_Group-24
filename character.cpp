@@ -21,14 +21,12 @@ void character::setHealth(int h)
 	health = h;
 }
 
-/*
 // Virtual method for speical ability
 void character::useSpecialAbility()
 {
 	std::cout << name << " uses " << specialAbility << "!" << std::endl;
 	// ability effect in battle classes
 }
-*/
 
 // Stat displaying method
 void character::displayStats() const
