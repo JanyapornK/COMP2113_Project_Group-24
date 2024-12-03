@@ -7,7 +7,7 @@ using namespace std;
 
 class Maze {
 public:
-  Maze(const vector<string>& layout);           // Constructor to load a fixed maze
+  Maze(int scenario);           // Constructor to load a fixed maze
   void play();                                  // Maze gameplay                             
   void displayMaze() const;                     // Display the current maze
   bool move(char direction);                    // Move the player (w, a, s, d)
