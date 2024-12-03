@@ -32,9 +32,11 @@ if player Int < = opponent:
 #include "character.h"
 using namespace std;
 
-int DICE_ROLLING(){ //standard die rolling,
-    srand(time(NULL)); //random seed
-    int die = rand() %12 + 1;// rand 1-12
+int DICE_ROLLING()
+{ 
+    //standard die rolling,
+    srand(time(NULL));           //random seed
+    int die = rand() %12 + 1;    // rand 1-12
     return die;
 }
 
@@ -43,9 +45,9 @@ void ATTACK(character* player, character& opponent)
     //takes in ATT stats of player, def of opponent, and the Health Points of Opponent
     int Damage, Dice;
     Dice = DICE_ROLLING();
-    Damage = Dice + player->attack - opponent.defence; //damage calculation
+    Damage = Dice + player->getAttack() - opponent.getDefence(); //damage calculation
     if (Dice == 12)
-        cout <<"BONUS DAMAGE"<<endl;
+        cout << "BONUS DAMAGE" << endl;
         Damage += Dice;
     
 // Athlete's special ability: 50% chance to deal double damage
@@ -79,7 +81,7 @@ void ATTACK_O(character& opponent, character* player)
     //Same as above but reversing the roles
     int Damage, Dice;
     Dice = DICE_ROLLING();
-    Damage = Dice + opponent.attack - player->defence;
+    Damage = Dice + opponent.getAttack() - player->getDefence();
     if (Dice == 12)
     {
         cout << "BONUS DAMAGE" << endl;
@@ -113,10 +115,10 @@ void INT(character* player, character& opponent)
     else
     {
         int originalHP = player->getHealth();
-        int healthChange = player->intelligence + Rolled_No - opponent.intelligence;
+        int healthChange = player->getIntelligence() + Rolled_No - opponent.getIntelligence();
         player->setHealth(originalHP + healthChange);
         
-        if (player->getHealth > originalHP)
+        if (player->getHealth() > originalHP)
         {
             cout << "Healed, Your HP = " << player->getHealth() << endl;
         }
@@ -147,7 +149,7 @@ void INT_O(character& opponent, character* player)
     else
     {
         int originalHP = opponent.getHealth();
-        int healthChange = opponent.intelligence + Rolled_No - player->intelligence;
+        int healthChange = opponent.getIntelligence() + Rolled_No - player->getIntelligence();
         opponent.setHealth(originalHP + healthChange);
         
         if (opponent.getHealth() > originalHP)
@@ -173,7 +175,7 @@ bool BATTLE_RESULT(character* player, character& opponent)
         int chance = DICE_ROLLING();
         if (chance <= 6)
         {
-            cout << "Special Ability Activated: You hacked the security system and skipped the battle!" << endl;
+            cout << "\nSpecial Ability Activated: You hacked the security system and skipped the battle!" << endl;
             return true;
         }
     }
@@ -181,11 +183,11 @@ bool BATTLE_RESULT(character* player, character& opponent)
     //implements the battle mechanism, gets the player and the opponent details, and returns true if the player wins)
     cout << "\nOpponent stats:" << endl;
     cout << "Health = " << opponent.getHealth() << endl;
-    cout << "Attack = " << opponent.attack << endl;
-    cout << "Defence = " << opponent.defence << endl;
-    cout << "Intelligence = " << opponent.intelligence << endl;
+    cout << "Attack = " << opponent.getAttack() << endl;
+    cout << "Defence = " << opponent.getDefence() << endl;
+    cout << "Intelligence = " << opponent.getIntelligence() << endl;
 
-    cout << "What will you do?" << endl;
+    cout << "\nWhat will you do?" << endl;
     cout << "Enter \"Attack \" to attack" << endl;
     cout << "Enter \"Intimidate \" to Heal" << endl;
     cout << "Chance that \"Intimidate \" will cause drastic damage as well, provided you have high enough intelligence." << endl;
@@ -197,22 +199,22 @@ bool BATTLE_RESULT(character* player, character& opponent)
         // Player's actions
         cout << "\nYour turn: " << endl;
         cin >> command;
-        if (command == "Attack")
+        if (command == "Attack" || command == "attack")
         {
             ATTACK(player, opponent);
             if (opponent.getHealth() <= 0) break;
-            cout << "Opponent's turn: "<< endl;
+            cout << "\nOpponent's turn: "<< endl;
         }
-        else if (command == "Intimidate")
+        else if (command == "Intimidate" || command == "intimidate")
         {
             INT(player, opponent);
             if (opponent.getHealth() <= 0) break;
-            cout << "Opponent's turn: " << endl;
+            cout << "\nOpponent's turn: " << endl;
         }
         else
         {
             cout << "Invalid command, you wasted your turn!!!" << endl;
-            cout << "Opponent's turn: " << endl;
+            cout << "\nOpponent's turn: " << endl;
         }
         
         // Opponent's actions
