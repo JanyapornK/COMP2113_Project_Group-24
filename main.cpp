@@ -133,7 +133,6 @@ void saveGame(character* playerCharacter, int currentScenario) {
     if (outfile) {
         outfile << playerCharacter->getName() << " "
                 << playerCharacter->getHealth() << " "
-                << playerCharacter->getMaxHealth() << " "
                 << playerCharacter->getAttack() << " "
                 << playerCharacter->getDefence() << " "
                 << playerCharacter->getIntelligence() << " "
