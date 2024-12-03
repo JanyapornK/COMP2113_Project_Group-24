@@ -24,7 +24,17 @@ char menu()
     return choice;
 }
 
+int backgroundStory() {
+    cout << "A rumor spreads through the campus about the professor losing his office key." << endl;
+    cout << "Whispers suggest that finding the key grants access to exam papers for better results." << endl;
+    cout << "Students are tempted by the opportunity, and embark on a clandestine quest to locate the missing key." << endl;
+    cout << "Now grab the chance and be the first person to get the key!" << endl;
+    return 0;
+}
+
 void startNewGame() {
+    backgroundStory();
+    
     // Choose the character
     character* playerCharacter = character::selectCharacter();
 
@@ -32,8 +42,9 @@ void startNewGame() {
         cout << "You have selected the following character: " << endl;
         playerCharacter->displayStats();
 
-        //go to room.cpp to find key
+        // Go to room.cpp to find the key
         Rmain();
+        
         // Scenario 1: Solve the maze to enter the professor's office
         cout << "You must solve the maze to enter the professor's office!" << endl;
         Maze mazeEnter(1);
@@ -95,17 +106,16 @@ int main()
                 break;
             
             case '2':
-                loadGame(); //load the previous saved game progress
+                loadGame(); // Load the previous saved game progress
                 break;
             
             default:
                 cout << "Invalid input! Please select 1, 2, or 3." << endl;
                 break;
         }
-        choice = menu();
+        choice = menu(); // Show the menu again
     }
     cout << "Hope you enjoyed the game!" << endl;
 
     return 0;
 }
-
