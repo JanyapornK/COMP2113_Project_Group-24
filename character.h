@@ -26,6 +26,7 @@ public:
 
 	// Items getting methods
 	std::string getName() const;
+	int getAttack() const;
 	int getHealth() const;
 	int getDefence() const;
 	int getIntelligence() const;
