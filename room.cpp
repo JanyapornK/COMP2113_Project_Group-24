@@ -133,7 +133,7 @@ int Rmain(character *playerCharacter){
       for (int i = 0; i < places.size(); i++)
       {
         string roomname = places[i].name;
-        transform(roomname.begin(), roomname.end(), roomname.begin(), tolower());
+        transform(roomname.begin(), roomname.end(), roomname.begin(), tolower);
         if (roomname == input)
         {
           roomIndex = i;
