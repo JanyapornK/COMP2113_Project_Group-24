@@ -87,9 +87,9 @@ void Maze::play() {
   while (!isExitReached()) {
     displayMaze();  // Show the maze
     cout << "Enter your move: ";
-    char move;
-    cin >> move;
-    if (!movePlayer(move)) {
+    char moveChar;
+    cin >> moveChar;
+    if (!move(moveChar)) {
       cout << "Invalid move! Try again." << endl;
     }
   }
