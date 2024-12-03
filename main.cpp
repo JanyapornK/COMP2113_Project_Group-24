@@ -9,9 +9,9 @@
 
 using namespace std;
 
+// Print the selection menu
 char menu() {
     char choice;
-    // Print the selection menu
     cout << "**********************************" << endl;
     cout << "Welcome to HKU mission impossible!" << endl;
     cout << "**********************************" << endl;
@@ -100,6 +100,7 @@ void startNewGame() {
 
         // Battle system
         //character opponent();
+
 void loadGame() {
     ifstream infile("savegame.txt");  
     if (!infile) {
