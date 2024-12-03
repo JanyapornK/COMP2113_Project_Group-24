@@ -38,6 +38,8 @@ public:
 	void setAttack(int attack);
 	void setDefence(int defence);
 	void setIntelligence(int intelligence);
+	void setSpecialAbility(const std::string specialAbility);
+	void setAbilityInfo(const std::string abilityInfo);
 
 	// Virtual method for special ability
 	virtual void useSpecialAbility();
