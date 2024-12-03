@@ -1,8 +1,7 @@
 # Group Project COMP2113 (I made this template to get us started
 The team: Chu Wai Lam UID: 3036219217. (Add your stuff guys)
 
-**Link to project:** http://recruiters-love-seeing-live-demos.com/
-
+**Link to project:** 
 ![alt tag](http://placecorgi.com/1200/650)
 
 ## What is this application?
