@@ -32,20 +32,20 @@ if player Int < = opponent:
 #include "character.h"
 using namespace std;
 
-int DICE_ROLLING(){
-    srand(time(NULL));
-    int die = rand() %12 + 1;
+int DICE_ROLLING(){ //standard die rolling,
+    srand(time(NULL)); //random seed
+    int die = rand() %12 + 1;// rand 1-12
     return die;
 }
 
-void ATTACK (const int P_ATT, const int O_DEF, int& O_HP){
+void ATTACK (const int P_ATT, const int O_DEF, int& O_HP){ //takes in ATT stats of player, def of opponent, and the Health Points of Opponent
     int Damage, Dice;
     Dice = DICE_ROLLING();
-    Damage = Dice + P_ATT - O_DEF;
+    Damage = Dice + P_ATT - O_DEF; //damage calculation
     if (Dice == 12)
         cout <<"BONUS DAMAGE"<<endl;
         Damage += Dice;
-
+// damage update to health points
     if (Damage > 0){
         O_HP-= Damage;
         cout<<"Success! Damage dealt: "<< Damage <<endl;
@@ -57,7 +57,8 @@ void ATTACK (const int P_ATT, const int O_DEF, int& O_HP){
     }
 }
 
-void ATTACK_O (const int O_ATT, const int P_DEF, int& P_HP){
+
+void ATTACK_O (const int O_ATT, const int P_DEF, int& P_HP){ //Same as above but reversing the roles
     int Damage, Dice;
     Dice = DICE_ROLLING();
     Damage = Dice + O_ATT - P_DEF;
@@ -75,7 +76,8 @@ void ATTACK_O (const int O_ATT, const int P_DEF, int& P_HP){
     }
 }
 
-void INT (const int P_INT, const int O_INT, int& P_HP, int& O_HP){
+void INT (const int P_INT, const int O_INT, int& P_HP, int& O_HP){ //Second battle mechanism, intimidating, basically heals and possibly deals damage)
+  // (takes in Intelligence of both Player and Opponent, and their Healths, 
     int Rolled_No = DICE_ROLLING();
     if (Rolled_No == 12){
             O_HP-= Rolled_No/2;
@@ -97,7 +99,7 @@ void INT (const int P_INT, const int O_INT, int& P_HP, int& O_HP){
 
 }
 
-void INT_O (const int O_INT, const int P_INT, int& O_HP, int& P_HP){
+void INT_O (const int O_INT, const int P_INT, int& O_HP, int& P_HP){ //same as above, different perspective, reversal of roles
     int Rolled_No = DICE_ROLLING();
     
     if (Rolled_No == 12){
@@ -119,7 +121,7 @@ void INT_O (const int O_INT, const int P_INT, int& O_HP, int& P_HP){
     }
 }
 
-bool BATTLE_RESULT (character& Player, character& Opponent){
+bool BATTLE_RESULT (character& Player, character& Opponent){ //implements the battle mechanism, gets the player and the opponent details, and returns true if the player wins)
     cout << "What will you do?"<<endl;
     cout << "Enter \"Attack \" to attack"<<endl;
     cout << "Enter \"Intimidate \"to Heal"<<endl;
