@@ -12,6 +12,6 @@ char menu(); // Displays the main menu and gets user choice
 void backgroundStory(); // Displays the game's background story
 void startNewGame(); // Starts a new game session
 void loadGame(); // Loads a previously saved game
-void saveGame(character* playerCharacter, int currentScenario); // Saves the game state
+void saveGame(); // Saves the game state
 
 #endif
