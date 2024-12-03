@@ -19,7 +19,7 @@ Attack:
 Heal/Intimidate:
 if player Int > opponent:
   -> roll dice (1-12)
-  -> (SPECIAL) -> if = = 6 win autonomatically
+  -> (SPECIAL) -> if = = 12 sth special will happen
   Number rolled += player's HP
 if player Int < = opponent:
   Number rolled += player's HP
