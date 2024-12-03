@@ -11,6 +11,7 @@ character::~character() {}
 
 // Stat getting methods
 std::string character::getName() const { return name; }
+int character::getAttack() const { return attack; }
 int character::getHealth() const { return health; }
 int character::getDefence() const { return defence; }
 int character::getIntelligence() const { return intelligence; }
