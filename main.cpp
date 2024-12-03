@@ -9,10 +9,9 @@
 
 using namespace std;
 
-char menu() 
-{
+char menu() {
     char choice;
-    // Print the selection menu;
+    // Print the selection menu
     cout << "**********************************" << endl;
     cout << "Welcome to HKU mission impossible!" << endl;
     cout << "**********************************" << endl;
@@ -28,15 +27,13 @@ char menu()
 }
 
 void backgroundStory() {
-    cout << "A rumor spreads through the campus about the professor losing his office key." << endl;
+    cout << "A rumor spreads through the campus about the professor losing his office key..." << endl;
     this_thread::sleep_for(chrono::seconds(1)); // Delay for 1 second
-    cout << "Whispers suggest that finding the key grants access to exam papers for better results." << endl;
+    cout << "Whispers suggest that finding the key grants access to exam papers for better results..." << endl;
     this_thread::sleep_for(chrono::seconds(1)); // Delay for 1 second
-    cout << "Students are tempted by the opportunity and embark on a clandestine quest to locate the missing key." << endl;
+    cout << "Students are tempted by the opportunity and embark on a clandestine quest to locate the missing key..." << endl;
     this_thread::sleep_for(chrono::seconds(1)); // Delay for 1 second
     cout << "Now hurry up and be the first person to find the key!!!" << endl;
-    
-    return 0;
 }
 
 void startNewGame() {
@@ -59,7 +56,7 @@ void startNewGame() {
             cout << "3. Exit to the main menu." << endl;
 
             char choice;
-            in >> choice;
+            cin >> choice;
 
             switch (choice) {
                 case '1':
@@ -118,7 +115,7 @@ void loadGame() {
     infile >> name >> health >> maxHealth >> attack >> defence >> intelligence >> currentScenario;
 
     // Initialize the character based on loaded data
-    charater* playerCharacter = new character(name, health, attack, defence, intelligence);
+    character* playerCharacter = new character(name, health, attack, defence, intelligence);
     cout << "Loaded character: " << playerCharacter->getName() << endl;
     playerCharacter->displayStats();
     
@@ -133,12 +130,12 @@ void saveGame(character* playerCharacter, int currentScenario) {
     ofstream outfile("savegame.txt");
     if (outfile) {
         outfile << playerCharacter->getName() << " "
-                 << playerCharacter->getHealth() << " "
-                 << playerCharacter->getMaxHealth() << " "
-                 << playerCharacter->getAttack() << " "
-                 << playerCharacter->getDefence() << " "
-                 << playerCharacter->getIntelligence() << " "
-                 << currentScenario << endl;
+                << playerCharacter->getHealth() << " "
+                << playerCharacter->getMaxHealth() << " "
+                << playerCharacter->getAttack() << " "
+                << playerCharacter->getDefence() << " "
+                << playerCharacter->getIntelligence() << " "
+                << currentScenario << endl;
         cout << "Game saved successfully!" << endl;
     }
     else {
@@ -146,13 +143,13 @@ void saveGame(character* playerCharacter, int currentScenario) {
     }
 }
                              
-int main() 
-{
+int main() {
+    character* playerCharacter = nullptr; // Declare playerCharacter globally accessible
+    int currentScenario = 1; // Declare currentScenario globally accessible
     char choice = menu();
-    while (choice != '4') 
-    {
-        switch (choice)
-        {
+    
+    while (choice != '4') {
+        switch (choice) {
             case '1':
                 startNewGame(); // Start a new game
                 break;
