@@ -9,7 +9,7 @@
 
 using namespace std;
 
-void printChoices(const vector<Room> places)
+void printChoices(const vector<Room>& places)
 {
   cout << "Where are the keys...?" << endl;
   cout << "Where would you go? (Enter the place)";
