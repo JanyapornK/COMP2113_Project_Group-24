@@ -1,5 +1,7 @@
 #include <iostream>
 #include <fstream>
+#include <chrono>
+#include <thread>
 #include "character.h"
 #include "room.h"
 #include "maze.h"
@@ -26,9 +28,12 @@ char menu()
 
 int backgroundStory() {
     cout << "A rumor spreads through the campus about the professor losing his office key." << endl;
+    this_thread::sleep_for(chromo::seconds(1)); // Delay for 1 second
     cout << "Whispers suggest that finding the key grants access to exam papers for better results." << endl;
+    this_thread::sleep_for(chromo::seconds(1)); // Delay for 1 second
     cout << "Students are tempted by the opportunity, and embark on a clandestine quest to locate the missing key." << endl;
-    cout << "Now grab the chance and be the first person to get the key!" << endl;
+    this_thread::sleep_for(chromo::seconds(1)); // Delay for 1 second
+    cout << "Now hurry up and be the first person to find the key!!!" << endl;
     return 0;
 }
 
