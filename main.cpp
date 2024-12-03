@@ -73,7 +73,7 @@ void startNewGame() {
                     break;
 
                 case '3':
-                    playing = false;
+                    playing = false; // Exit the gameplay loop
                     break;
 
                 default:
@@ -104,8 +104,7 @@ void startNewGame() {
         // Battle system
         //character opponent();
 void loadGame() {
-    ifstream infile("savegame.txt");
-    
+    ifstream infile("savegame.txt");  
     if (!infile) {
         cout << "No saved game found." << endl;
         return;
@@ -115,9 +114,14 @@ void loadGame() {
     int health, maxHealth, attack, defence, intelligence;
     int currentScenario;
 
-    // Read the character data from the file
+    // Read the character data from savegame.txt
     infile >> name >> health >> maxHealth >> attack >> defence >> intelligence >> currentScenario;
 
+    // Initialize the character based on loaded data
+    charater* playerCharacter = new character(name, health, attack, defence, intelligence);
+    cout << "Loaded character: " << playerCharacter->getName() << endl;
+    playerCharacter->displayStats();
+    
     // Load game state (e.g., current scenario)
     Maze maze(currentScenario);
     maze.play(); // Enter the maze gameplay
@@ -138,7 +142,7 @@ void saveGame(character* playerCharacter, int currentScenario) {
         cout << "Game saved successfully!" << endl;
     }
     else {
-        cout << "Error in saving the game." << endl;
+        cout << "Error saving the game." << endl;
     }
 }
                              
@@ -154,7 +158,13 @@ int main()
                 break;
             
             case '2':
-                saveGame(); // Save the game progress
+                // Ensure a character is selected before saving
+                if (playerCharacter) {
+                    saveGame(playerCharacter, currentScenario); // Save progress
+                }
+                else {
+                    cout << "No game in progress to save." << endl;
+                }
                 break;
 
             case '3':
