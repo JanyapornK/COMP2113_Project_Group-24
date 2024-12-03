@@ -31,7 +31,7 @@ int main()
         {
             case '1':
                 //choose the character
-
+                character* player = character::selectCharacter();
                 //go to room.cpp to find key
                 Rmain();
                 // Scenario 1: Solve the maze to enter the professor's office
@@ -53,6 +53,7 @@ int main()
     }
     cout << "Hope you enjoyed the game!" << endl;
 
+    delete player;
     return 0;
 }
 
