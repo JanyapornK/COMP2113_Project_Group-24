@@ -3,12 +3,20 @@
 
 #include <string>
 #include <vector>
-struct Room{
-  string name;
-  bool win;
-  bool key;
-  bool arrived; }
+#include "character.h"
 
-void printChoices(vector <Room> places);
+using namespace std;
+
+struct Room
+{
+  string name;
+  bool key;
+  bool arrived;
+  character opponent;
+}
+
+void printChoices(const vector<Room>& places);
+bool checkValidInput(const string& input, const vector<Room>& places);
+int Rmain(character* playerCharacter);
 
 #endif
