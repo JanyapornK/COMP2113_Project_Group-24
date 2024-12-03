@@ -8,7 +8,6 @@ using namespace std;
 
 struct Room{
   string name;
-  bool win;
   bool key;
   bool arrived; //t=user already got in before
 };
