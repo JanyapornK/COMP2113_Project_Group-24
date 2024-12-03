@@ -34,6 +34,7 @@ int backgroundStory() {
     cout << "Students are tempted by the opportunity and embark on a clandestine quest to locate the missing key." << endl;
     this_thread::sleep_for(chromo::seconds(1)); // Delay for 1 second
     cout << "Now hurry up and be the first person to find the key!!!" << endl;
+    
     return 0;
 }
 
@@ -65,12 +66,14 @@ void startNewGame() {
         if (BATTLE_RESULT(*playerCharacter, opponent)) {
             cout << "You defeated the opponent!" << endl;
         }
+            
         else {
             cout << "You were defeated!" << endl;
         }
 
         delete playerCharacter; // Clean up dynamically allocated memory
     }
+        
     else {
         cout << "Error selecting character." << endl;
     }
@@ -78,6 +81,7 @@ void startNewGame() {
 
 void loadGame() {
     ifstream infile("savegame.txt");
+    
     if (!infile) {
         cout << "No saved game found." << endl;
         return;
@@ -102,6 +106,7 @@ void loadGame() {
 int main() 
 {
     char choice = menu();
+    
     while (choice != '3') 
     {
         switch (choice)
@@ -118,8 +123,10 @@ int main()
                 cout << "Invalid input! Please select 1, 2, or 3." << endl;
                 break;
         }
+        
         choice = menu(); // Show the menu again
     }
+    
     cout << "Hope you enjoyed the game!" << endl;
 
     return 0;
