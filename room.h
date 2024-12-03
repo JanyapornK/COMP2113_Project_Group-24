@@ -13,7 +13,7 @@ struct Room
   bool key;
   bool arrived;
   character opponent;
-}
+};
 
 void printChoices(const vector<Room>& places);
 bool checkValidInput(const string& input, const vector<Room>& places);
