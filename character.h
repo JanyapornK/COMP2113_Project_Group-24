@@ -10,17 +10,17 @@ class character
 protected:
 	std::string name;
 	int health;
-	// int maxHealth; (may not be included?)
 	int attack;
 	int defence;
 	int intelligence;
 	std::string specialAbility;
+	std::string abilityInfo;
 
 public:
 	// Constructors
 	character();
-	character(std::string name, int health, int attack, int defence, int intelligence, std::string specialAbility);
-	
+	character(std::string name, int health, int attack, int defence, int intelligence);
+	character(std::string name, int health, int attack, int defence, int intelligence, std::string specialAbility, std::string abilityInfo);
 	// Destructor
 	virtual ~character();
 
@@ -30,9 +30,13 @@ public:
 	int getDefence() const;
 	int getIntelligence() const;
 	std::string getSpecialAbility() const;
+	std::string getAbilityInfo() const;
 
 	// Stat setting method
 	void setHealth(int health);
+	void setAttack(int attack);
+	void setDefence(int defence);
+	void setIntelligence(int intelligence);
 
 	// Virtual method for special ability
 	virtual void useSpecialAbility();
