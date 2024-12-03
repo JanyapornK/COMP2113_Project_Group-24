@@ -9,6 +9,9 @@
 
 using namespace std;
 
+character* playerCharacter = nullptr;
+int currentScenario = 0;
+
 // Print the selection menu
 char menu() {
     char choice;
@@ -41,10 +44,13 @@ void startNewGame() {
     
     // Choose the character
     character* playerCharacter = character::selectCharacter();
-    int currentScenario = 1; // Set initial scenario
+    currentScenario = 0; // Set initial scenario
 
     if (playerCharacter) 
     {
+        cout << "You have selected the following character:" << endl;
+        playerCharacter->displayStats();
+        
         bool gameInProgress = true;
         while (gameInProgress) 
         {
