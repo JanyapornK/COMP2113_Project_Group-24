@@ -84,10 +84,11 @@ void startNewGame() {
         cout << "Error selecting character." << endl;
     }
 }
-        // Go to room.cpp to find the key
+        // Go to room.cpp to find the key <if character not rebel>
         //character opponent();
-        //Rmain(*playerCharacter, opponent);
-        
+        //if (playerCharacter != nullptr && playerCharacter->getType() != "Rebel") {
+        // Rmain(*playerCharacter, opponent);}
+
         // Scenario 1: Solve the maze to enter the professor's office
         //cout << "You must solve the maze to enter the professor's office!" << endl;
         //Maze mazeEnter(1);
