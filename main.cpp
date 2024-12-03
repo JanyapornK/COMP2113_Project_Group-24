@@ -43,6 +43,7 @@ void startNewGame() {
         Maze mazeOut(2);
         mazeOut.play();
 
+        // Battle system
         character opponent();
         if (BATTLE_RESULT(*playerCharacter, opponent)) {
             cout << "You defeated the opponent!" << endl;
