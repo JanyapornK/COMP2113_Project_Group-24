@@ -4,6 +4,7 @@
 #include <algorithm>
 #include <string>
 #include "room.h"
+#include "battle.h"
 using namespace std;
 
 struct Room{
