@@ -48,6 +48,7 @@ int main()
                 //load the previous saved game progress
             default:
                 cout << "Invalid input!" << endl;
+                break;
         }
         choice = menu();
     }
