@@ -44,7 +44,7 @@ character* character::selectCharacter()
 {
 	int choice;
 	std::cout << "Choose your character: " << std::endl;
-	std::cout << "1: Athlete" << std::endl; // characters making still in progress
+	std::cout << "1: Athlete" << std::endl;
 	std::cout << "2: Hacker" << std::endl;
 	std::cout << "3: Rebel" << std::endl;
 	std::cout << "Enter the number of your choice: ";
