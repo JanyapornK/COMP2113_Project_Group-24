@@ -2,6 +2,7 @@
 #include "character.h"
 #include "room.h"
 #include "maze.h"
+#include "battle.h"
 
 using namespace std;
 
@@ -22,17 +23,15 @@ char menu()
     return choice;
 }
 
-int main() 
-{
-    char choice = menu();
-    while (choice != '3') 
-    {
-        switch (choice)
-        {
-            case '1':
-                //choose the character
+void startNewGame() {
+    //choose the character
+    character* playerCharacter = character::selectCharacter();
 
-                //go to room.cpp to find key
+    if (playerCharacter) {
+        cout << "You have selected the following character: " << endl;
+        playerCharacter->displayStats();
+
+        //go to room.cpp to find key
                 Rmain();
                 // Scenario 1: Solve the maze to enter the professor's office
                 cout << "You must solve the maze to enter the professor's office!" << endl;
@@ -43,11 +42,44 @@ int main()
                 cout << "You must solve the maze to escape the building!" << endl;
                 Maze mazeOut(2);
                 mazeOut.play();
+
+                character opponent();
+                if (BATTLE_RESULT(*playerCharacter, opponent)) {
+                    cout << "You defeated the opponent!" << endl;
+                }
+                else {
+                    cout << "You were defeated!" << endl;
+                }
+
+                delete playerCharacter; // Clean up dynamically allocated memory
+    }
+    else {
+        cout << "Error selecting character." << endl;
+    }
+}
+
+void loadGame() {
+
+}
+                    
+                
+int main() 
+{
+    char choice = menu();
+    while (choice != '3') 
+    {
+        switch (choice)
+        {
+            case '1':
+                startNewGame(); // Start a new game
+                break;
             
             case '2':
-                //load the previous saved game progress
+                loadGame(); //load the previous saved game progress
+                break;
+            
             default:
-                cout << "Invalid input!" << endl;
+                cout << "Invalid input! Please select 1, 2, or 3." << endl;
                 break;
         }
         choice = menu();
