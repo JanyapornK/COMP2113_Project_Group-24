@@ -38,131 +38,203 @@ int DICE_ROLLING(){ //standard die rolling,
     return die;
 }
 
-void ATTACK (const int P_ATT, const int O_DEF, int& O_HP){ //takes in ATT stats of player, def of opponent, and the Health Points of Opponent
+void ATTACK(character* player, character& opponent)
+{ 
+    //takes in ATT stats of player, def of opponent, and the Health Points of Opponent
     int Damage, Dice;
     Dice = DICE_ROLLING();
-    Damage = Dice + P_ATT - O_DEF; //damage calculation
+    Damage = Dice + player->attack - opponent.defence; //damage calculation
     if (Dice == 12)
         cout <<"BONUS DAMAGE"<<endl;
         Damage += Dice;
+    
+// Athlete's special ability: 50% chance to deal double damage
+    if (dynamic_cast<athlete*>(player))
+    {
+        int chance = DICE_ROLLING();
+        if (chance <= 6)
+        {
+            cout << "Special Ability Activated: Double Damage!" << endl;
+            Damage *= 2;
+        }
+    }
+
 // damage update to health points
-    if (Damage > 0){
-        O_HP-= Damage;
-        cout<<"Success! Damage dealt: "<< Damage <<endl;
-        cout<<"Opponent's HP = "<< O_HP <<endl;
+    if (Damage > 0)
+    {
+        opponent.setHealth(opponent.getHealth() - Damage);
+        cout << "Success! Damage dealt: " << Damage << endl;
+        cout << "Opponent's HP = " << opponent.getHealth() << endl;
     }
-    else{
-        cout << "Attack failed, zero damage dealt: "<<endl;
-        cout<<"Opponent's HP = "<< O_HP <<endl;
+    else
+    {
+        cout << "Attack failed, zero damage dealt." << endl;
+        cout << "Opponent's HP = " << opponent.getHealth() << endl;
     }
 }
 
 
-void ATTACK_O (const int O_ATT, const int P_DEF, int& P_HP){ //Same as above but reversing the roles
+void ATTACK_O(character& opponent, character* player)
+{ 
+    //Same as above but reversing the roles
     int Damage, Dice;
     Dice = DICE_ROLLING();
-    Damage = Dice + O_ATT - P_DEF;
+    Damage = Dice + opponent.attack - player->defence;
     if (Dice == 12)
-        cout <<"BONUS DAMAGE"<<endl;
+    {
+        cout << "BONUS DAMAGE" << endl;
         Damage += Dice;
-    if (Damage > 0){
-        P_HP-= Damage;
-        cout<<"You have suffered damage! Damage received: "<< Damage <<endl;
-        cout<<"Your HP = "<< P_HP <<endl;
     }
-    else{
-        cout << "Opponent's attack failed, zero damage received: "<<endl;
-        cout<<"Your HP = "<< P_HP <<endl;
+    if (Damage > 0)
+    {
+        player->setHealth(player->getHealth() - Damage);
+        cout << "You have suffered damage! Damage received: " << Damage << endl;
+        cout << "Your HP = " << player->getHealth() << endl;
     }
-}
-
-void INT (const int P_INT, const int O_INT, int& P_HP, int& O_HP){ //Second battle mechanism, intimidating, basically heals and possibly deals damage)
-  // (takes in Intelligence of both Player and Opponent, and their Healths, 
-    int Rolled_No = DICE_ROLLING();
-    if (Rolled_No == 12){
-            O_HP-= Rolled_No/2;
-            cout << "Congrats, bonus action. Damage done to Opponent!"<<endl;
-            cout << " Opponent's HP = " << O_HP << endl;
-            P_HP += Rolled_No ;
-            cout << "Healed, HP = " << P_HP << endl;
-    }
-    else{
-        int original = P_HP;
-        P_HP = P_HP + P_INT + Rolled_No - O_INT;
-        if (P_HP > original)
-            cout << "Healed, HP = " << P_HP << endl;
-        else if (P_HP == original)
-            cout << "Healing failed, HP = " << P_HP << endl;
-        else
-            cout <<"Failed to intimidate and got intimidated back, HP = " << P_HP <<endl;
-    }
-
-}
-
-void INT_O (const int O_INT, const int P_INT, int& O_HP, int& P_HP){ //same as above, different perspective, reversal of roles
-    int Rolled_No = DICE_ROLLING();
-    
-    if (Rolled_No == 12){
-        P_HP-= Rolled_No/2;
-        cout << "Oh no, bonus action, damage received!"<<endl;
-        cout << " Your HP = " << P_HP << endl;
-        O_HP += Rolled_No;
-        cout << "Opponent has healed, HP = " << O_HP << endl;
-        }
-    else{
-        int original = O_HP;
-        O_HP = O_HP + O_INT + Rolled_No - P_INT;
-        if (O_HP > original)
-            cout << "Healed, HP = " << O_HP << endl;
-        else if (O_HP == original)
-            cout << "Healing failed, HP = " << O_HP << endl;
-        else
-            cout <<"Failed to intimidate and got intimidated back, HP = " << O_HP <<endl;
-    }
-}
-
-bool BATTLE_RESULT (character& Player, character& Opponent){ //implements the battle mechanism, gets the player and the opponent details, and returns true if the player wins)
-    cout << "What will you do?"<<endl;
-    cout << "Enter \"Attack \" to attack"<<endl;
-    cout << "Enter \"Intimidate \"to Heal"<<endl;
-    cout << "Chance that \"Intimidate \" will cause drastic damage as well, provided you have high enough INT"<<endl;
-    cout << "Note that the enemy also has the same moveset as you, they can also deal damage after they are defeated."<< endl;
-    cout << "Opp stats:"<<endl;
-    cout << "Health = "<< Opponent.health <<endl;
-    cout << "Attack = " << Opponent.attack << endl;
-    cout << "Defence = " << Opponent.defence << endl;
-    cout << "Intelligence = " << Opponent.intelligence << endl;
-    string command;
-    while (Player.health > 0 && Opponent.health > 0){
-        cout <<"Your turn: " <<endl;
-        cin >> command;
-        if (command == "Attack"){
-            ATTACK(Player.attack, Opponent.defence, Opponent.health);
-            cout <<"Opponent's turn: "<< endl;
-        }
-        else if (command == "Intimidate"){
-            INT(Player.intelligence, Opponent.intelligence, Player.health, Opponent.health);
-            cout <<"Opponent's turn: " <<endl;
-        }
-        else{
-            cout<<"Invalid command, you wasted your turn!!! \n" << "Opponent's turn: "<< endl;
-        }
-        int Action = DICE_ROLLING();
-        if (Action > 2 && Opponent.HP >= 20){
-            cout << "Opponent Attacks."<<endl;
-            ATTACK_O(Opponent.ATT, Player.DEF, Player.HP);
-        }
-        else {
-            cout << "Opponent intimidates." <<endl;
-            INT_O(Opponent.INT, Player.INT, Opponent.HP, Player.HP);
-    
-        } 
-
-    }
-
-    if (Player.health <= 0)
-        return false;
     else
-        return true;
+    {
+        cout << "Opponent's attack failed, zero damage received." << endl;
+        cout << "Your HP = " << player->getHealth() << endl;
+    }
+}
 
+void INT(character* player, character& opponent)
+{ 
+    //Second battle mechanism, intimidating, basically heals and possibly deals damage)
+    // (takes in Intelligence of both Player and Opponent, and their Healths, 
+    int Rolled_No = DICE_ROLLING();
+    if (Rolled_No == 12){
+            opponent.setHealth(opponent.getHealth() - Rolled_No / 2);
+            cout << "Congrats, bonus action. Damage done to Opponent!" << endl;
+            cout << "Opponent's HP = " << opponent.getHealth() << endl;
+            player->setHealth(player->getHealth() + Rolled_No);
+            cout << "Healed, Your HP = " << player->getHealth() << endl;
+    }
+    else
+    {
+        int originalHP = player->getHealth();
+        int healthChange = player->intelligence + Rolled_No - opponent.intelligence;
+        player->setHealth(originalHP + healthChange);
+        
+        if (player->getHealth > originalHP)
+        {
+            cout << "Healed, Your HP = " << player->getHealth() << endl;
+        }
+        else if (player->getHealth() == originalHP)
+        {
+            cout << "Healing failed, Your HP = " << player->getHealth() << endl;
+        }
+        else
+        {
+            cout << "Failed to intimidate and got intimidated back, Your HP = " << player->getHealth() << endl;
+        }
+    }
+}
+
+void INT_O(character& opponent, character* player)
+{ 
+    //same as above, different perspective, reversal of roles
+    int Rolled_No = DICE_ROLLING();
+    
+    if (Rolled_No == 12)
+    {
+        player->setHealth(player->getHealth() - Rolled_No / 2);
+        cout << "Oh no, bonus action, damage received!" << endl;
+        cout << " Your HP = " << player->getHealth() << endl;
+        opponent.setHealth(opponent.getHealth() + Rolled_No);
+        cout << "Opponent has healed, HP = " << opponent.getHealth() << endl;
+    }
+    else
+    {
+        int originalHP = opponent.getHealth();
+        int healthChange = opponent.intelligence + Rolled_No - player->intelligence;
+        opponent.setHealth(originalHP + healthChange);
+        
+        if (opponent.getHealth() > originalHP)
+        {
+            cout << "Opponent healed, HP = " << opponent.getHealth() << endl;
+        }
+        else if (opponent.getHealth() == originalHP)
+        {
+            cout << "Opponent's healing failed, HP = " << opponent.getHealth() << endl;
+        }
+        else
+        {
+            cout << "Opponent failed to intimidate and got intimidated back, HP = " << opponent.getHealth() << endl;
+        }
+    }
+}
+
+bool BATTLE_RESULT(character* player, character& opponent)
+{ 
+    // Hacker's special ability: 50% chance to skip battle
+    if (dynamic_cast<hacker*>(player))
+    {
+        int chance = DICE_ROLLING();
+        if (chance <= 6)
+        {
+            cout << "Special Ability Activated: You hacked the security system and skipped the battle!" << endl;
+            return true;
+        }
+    }
+    
+    //implements the battle mechanism, gets the player and the opponent details, and returns true if the player wins)
+    cout << "\nOpponent stats:" << endl;
+    cout << "Health = " << opponent.getHealth() << endl;
+    cout << "Attack = " << opponent.attack << endl;
+    cout << "Defence = " << opponent.defence << endl;
+    cout << "Intelligence = " << opponent.intelligence << endl;
+
+    cout << "What will you do?" << endl;
+    cout << "Enter \"Attack \" to attack" << endl;
+    cout << "Enter \"Intimidate \" to Heal" << endl;
+    cout << "Chance that \"Intimidate \" will cause drastic damage as well, provided you have high enough intelligence." << endl;
+    cout << "Note that the enemy also has the same moveset as you, they can also deal damage after they are defeated." << endl;
+
+    string command;
+    while (player->getHealth() > 0 && opponent.getHealth() > 0)
+    {
+        // Player's actions
+        cout << "\nYour turn: " << endl;
+        cin >> command;
+        if (command == "Attack")
+        {
+            ATTACK(player, opponent);
+            if (opponent.getHealth() <= 0) break;
+            cout << "Opponent's turn: "<< endl;
+        }
+        else if (command == "Intimidate")
+        {
+            INT(player, opponent);
+            if (opponent.getHealth() <= 0) break;
+            cout << "Opponent's turn: " << endl;
+        }
+        else
+        {
+            cout << "Invalid command, you wasted your turn!!!" << endl;
+            cout << "Opponent's turn: " << endl;
+        }
+        
+        // Opponent's actions
+        int Action = DICE_ROLLING();
+        if (Action > 2 && opponent.getHealth() >= 20){
+            cout << "Opponent Attacks." << endl;
+            ATTACK_O(opponent, player);
+        }
+        else 
+        {
+            cout << "Opponent intimidates." << endl;
+            INT_O(opponent, player);
+        } 
+    }
+
+    if (player->getHealth() <= 0)
+    {
+        cout << "You have been defeated!" << endl;
+        return false;
+    }
+    else
+    {
+        cout << "You won the battle!" << endl;
+        return true;
 }
