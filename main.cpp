@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 #include "character.h"
 #include "room.h"
 #include "maze.h"
@@ -60,7 +61,25 @@ void startNewGame() {
 }
 
 void loadGame() {
+    ifstream infile("savegame.txt");
+    if (!infile) {
+        cout << "No saved game found." << endl;
+        return;
+    }
 
+    string name;
+    int health, maxHealth, attack, defence, intelligence;
+    int currentScenario;
+
+    // Read the character data from the file
+    infile >> name >> health >> maxHealth >> attack >> defence >> intelligence >> currentScenario;
+
+    // Load game state (e.g., current scenario)
+    Maze maze(currentScenario);
+    maze.play(); // Enter the maze gameplay
+
+    // Clean up
+    delete playerCharacter;
 }
                     
                 
