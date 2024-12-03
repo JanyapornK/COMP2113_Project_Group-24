@@ -110,7 +110,7 @@ int Rmain(character *playerCharacter){
           statsAboveFive--;
         }
       }
-    r.opponent = character("Guard", oppHealth, oppAttack, oppIntelligence);
+    r.opponent = character("Guard", oppHealth, oppAttack, oppDefence, oppIntelligence);
     
     places.push_back(r);
   }
