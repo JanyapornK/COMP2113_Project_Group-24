@@ -12,7 +12,7 @@ The idea is as follows: suppose the player has the following stats: HP = 50, ATT
 (The intelligence of the players determines the possibility of avoiding battle at all, while the Intelligence of the bosses determine playstyle)
 The battle mech is a turned-based attack. Both the bosses and the player have 2 choices: attack or heal/intimidate.
 Attack:
-1. Damage = dice throw (1-6) + (ATT - DEF)
+1. Damage = dice throw (1-12) + (ATT - DEF)
 - If ends up less than 0, damage failed,
 - regardless it is the opponents turn, same process
 
@@ -36,7 +36,7 @@ int DICE_ROLLING()
 { 
     //standard die rolling,
     srand(time(NULL));           //random seed
-    int die = rand() %12 + 1;    // rand 1-12
+    int die = rand() % 12 + 1;    // rand 1-12
     return die;
 }
 
