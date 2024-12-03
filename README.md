@@ -1,6 +1,6 @@
 # Group Project COMP2113 (I made this template to get us started
 The team: Chu Wai Lam UID: 3036219217. (Add your stuff guys)
-
+Lau Ting Hei Hayley UID: 3036224573.
 **Link to project:** 
 ![alt tag](http://placecorgi.com/1200/650)
 
