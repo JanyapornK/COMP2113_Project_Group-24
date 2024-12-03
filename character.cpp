@@ -23,8 +23,8 @@ void character::setHealth(int h) { health = h; }
 void character::setAttack(int a) { attack = a; }
 void character::setDefence(int d) { defence = d; }
 void character::setIntelligence(int i) { intelligence = i; }
-void character::setSpecialAbility(const std::string specialAbility) { return specialAbility; }
-void character::setAbilityInfo(const std::string abilityInfo) { return abilityInfo; }
+void character::setSpecialAbility(const std::string& ability) { specialAbility = ability; }
+void character::setAbilityInfo(const std::string& info) { abilityInfo = info; }
 
 
 // Virtual method for speical ability
