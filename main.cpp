@@ -114,7 +114,7 @@ void loadGame() {
     int currentScenario;
 
     // Read the character data from savegame.txt
-    infile >> name >> health >> maxHealth >> attack >> defence >> intelligence >> currentScenario;
+    infile >> name >> health >> attack >> defence >> intelligence >> currentScenario;
 
     // Initialize the character based on loaded data
     character* playerCharacter = new character(name, health, attack, defence, intelligence);
