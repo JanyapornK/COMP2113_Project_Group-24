@@ -9,7 +9,7 @@ using namespace std;
 char menu() 
 {
     char choice;
-    //print the selection menu;
+    // Print the selection menu;
     cout << "**********************************" << endl;
     cout << "Welcome to HKU mission impossible!" << endl;
     cout << "**********************************" << endl;
@@ -24,7 +24,7 @@ char menu()
 }
 
 void startNewGame() {
-    //choose the character
+    // Choose the character
     character* playerCharacter = character::selectCharacter();
 
     if (playerCharacter) {
@@ -32,26 +32,26 @@ void startNewGame() {
         playerCharacter->displayStats();
 
         //go to room.cpp to find key
-                Rmain();
-                // Scenario 1: Solve the maze to enter the professor's office
-                cout << "You must solve the maze to enter the professor's office!" << endl;
-                Maze mazeEnter(1);
-                mazeEnter.play();
+        Rmain();
+        // Scenario 1: Solve the maze to enter the professor's office
+        cout << "You must solve the maze to enter the professor's office!" << endl;
+        Maze mazeEnter(1);
+        mazeEnter.play();
 
-                // Scenario 2: Solve the maze to escape after stealing the exam paper
-                cout << "You must solve the maze to escape the building!" << endl;
-                Maze mazeOut(2);
-                mazeOut.play();
+        // Scenario 2: Solve the maze to escape after stealing the exam paper
+        cout << "You must solve the maze to escape the building!" << endl;
+        Maze mazeOut(2);
+        mazeOut.play();
 
-                character opponent();
-                if (BATTLE_RESULT(*playerCharacter, opponent)) {
-                    cout << "You defeated the opponent!" << endl;
-                }
-                else {
-                    cout << "You were defeated!" << endl;
-                }
+        character opponent();
+        if (BATTLE_RESULT(*playerCharacter, opponent)) {
+            cout << "You defeated the opponent!" << endl;
+        }
+        else {
+            cout << "You were defeated!" << endl;
+        }
 
-                delete playerCharacter; // Clean up dynamically allocated memory
+        delete playerCharacter; // Clean up dynamically allocated memory
     }
     else {
         cout << "Error selecting character." << endl;
