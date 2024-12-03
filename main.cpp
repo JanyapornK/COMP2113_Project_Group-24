@@ -49,7 +49,8 @@ void startNewGame() {
         playerCharacter->displayStats();
 
         // Go to room.cpp to find the key
-        Rmain();
+        character opponent();
+        Rmain(*playerCharacter, opponent);
         
         // Scenario 1: Solve the maze to enter the professor's office
         cout << "You must solve the maze to enter the professor's office!" << endl;
