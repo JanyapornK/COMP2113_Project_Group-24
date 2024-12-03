@@ -8,7 +8,6 @@
 #include <string>
 #include <vector>
 
-// Function declarations
 char menu(); // Displays the main menu and gets user choice
 void backgroundStory(); // Displays the game's background story
 void startNewGame(); // Starts a new game session
