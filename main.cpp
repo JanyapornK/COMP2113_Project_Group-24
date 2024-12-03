@@ -43,44 +43,203 @@ void startNewGame() {
     character* playerCharacter = character::selectCharacter();
     int currentScenario = 1; // Set initial scenario
 
-    if (playerCharacter) {
-        cout << "You have selected the following character: " << endl;
-        playerCharacter->displayStats();
-
-        // Start the gameplay loop
-        bool playing = true;
-        while (playing) {
-            cout << "You are in a new scenario. What would you like to do?" << endl;
-            cout << "1. Exlopre the maze." << endl;
-            cout << "2. Save game." << endl;
-            cout << "3. Exit to the main menu." << endl;
-
-            char choice;
-            cin >> choice;
-
-            switch (choice) {
+    if (playerCharacter) 
+    {
+        bool gameInProgress = true;
+        while (gameInProgress) 
+        {
+            // Present options to the player based on current scenario
+            cout << "\nWhat would you like to do next?" << endl;
+            if (currentScenario == 0) 
+            {
+                cout << "1. Search for the key." << endl;
+                cout << "2. Save game." << endl;
+                cout << "3. Exit to main menu." << endl;
+                char choice;
+                cin >> choice;
+                switch (choice) 
+                {
                 case '1':
-                    cout << "You must solve the maze to enter the professor's office!" << endl;
-                    Maze mazeEnter(currentScenario);
-                    mazeEnter.play();
+                    // Check if the character is a rebel
+                    if (dynamic_cast<rebel*>(playerCharacter) == nullptr) 
+                    {
+                        // If not a rebel, search for the key
+                        int roomResult = Rmain(playerCharacter);
+                        if (roomResult == 1) 
+                        {
+                            // Game over
+                            cout << "Game over. You failed to find the key or were defeated." << endl;
+                            delete playerCharacter;
+                            playerCharacter = nullptr;
+                            gameInProgress = false;
+                        } 
+                        else 
+                        {
+                            cout << "You found the key!" << endl;
+                            currentScenario = 1;
+                        }
+                    } 
+                    else 
+                    {
+                        cout << "As a rebel, you can pick locks and skip finding the key." << endl;
+                        currentScenario = 1;
+                    }
                     break;
-
                 case '2':
-                    saveGame(playerCharacter, currentScenario);
+                    saveGame();
                     break;
-
                 case '3':
-                    playing = false; // Exit the gameplay loop
+                    // Exit to main menu
+                    delete playerCharacter;
+                    playerCharacter = nullptr;
+                    gameInProgress = false;
                     break;
-
                 default:
                     cout << "Invalid input! Please select 1, 2, or 3." << endl;
                     break;
+                }
+            } 
+            else if (currentScenario == 1) 
+            {
+                cout << "1. Enter the maze to reach the professor's office." << endl;
+                cout << "2. Save game." << endl;
+                cout << "3. Exit to main menu." << endl;
+                char choice;
+                cin >> choice;
+                switch (choice) 
+                {
+                case '1':
+                    // Proceed to Scenario 1: Maze to enter the professor's office
+                    cout << "You must solve the maze to enter the professor's office!" << endl;
+                    Maze mazeEnter(1);
+                    mazeEnter.play();
+                    currentScenario = 2;
+                    break;
+                case '2':
+                    saveGame();
+                    break;
+                case '3':
+                    // Exit to main menu
+                    delete playerCharacter;
+                    playerCharacter = nullptr;
+                    gameInProgress = false;
+                    break;
+                default:
+                    cout << "Invalid input! Please select 1, 2, or 3." << endl;
+                    break;
+                }
+            } 
+            else if (currentScenario == 2) 
+            {
+                cout << "1. Confront the professor." << endl;
+                cout << "2. Save game." << endl;
+                cout << "3. Exit to main menu." << endl;
+                char choice;
+                cin >> choice;
+                switch (choice) 
+                {
+                case '1':
+                    // Battle with the professor
+                    // Create the professor character
+                    character professor("Professor", 50, rand() % 10 + 1, rand() % 10 + 1, rand() % 10 + 1);
+
+                    // Ensure the professor has at least two stats above 5
+                    int statsAboveFive = 0;
+                    if (professor.getAttack() > 5) statsAboveFive++;
+                    if (professor.getDefence() > 5) statsAboveFive++;
+                    if (professor.getIntelligence() > 5) statsAboveFive++;
+                    while (statsAboveFive < 2) 
+                    {
+                        int statToIncrease = rand() % 3;
+                        switch (statToIncrease) 
+                        {
+                        case 0:
+                            professor.setAttack(rand() % 5 + 6);
+                            break;
+                        case 1:
+                            professor.setDefence(rand() % 5 + 6);
+                            break;
+                        case 2:
+                            professor.setIntelligence(rand() % 5 + 6);
+                            break;
+                        }
+                        statsAboveFive = 0;
+                        if (professor.getAttack() > 5) statsAboveFive++;
+                        if (professor.getDefence() > 5) statsAboveFive++;
+                        if (professor.getIntelligence() > 5) statsAboveFive++;
+                    }
+
+                    cout << "You have encountered the professor!" << endl;
+
+                    bool battleResult = BATTLE_RESULT(playerCharacter, professor);
+                    if (!battleResult) {
+                        cout << "You were defeated by the professor. Game over." << endl;
+                        delete playerCharacter;
+                        playerCharacter = nullptr;
+                        gameInProgress = false;
+                    } 
+                    else 
+                    {
+                        cout << "You defeated the professor and got the exam papers!" << endl;
+                        currentScenario = 3;
+                    }
+                    break;
+                case '2':
+                    saveGame();
+                    break;
+                case '3':
+                    // Exit to main menu
+                    delete playerCharacter;
+                    playerCharacter = nullptr;
+                    gameInProgress = false;
+                    break;
+                default:
+                    cout << "Invalid input! Please select 1, 2, or 3." << endl;
+                    break;
+                }
+            } 
+            else if (currentScenario == 3) 
+            {
+                cout << "1. Escape through the maze." << endl;
+                cout << "2. Save game." << endl;
+                cout << "3. Exit to main menu." << endl;
+                char choice;
+                cin >> choice;
+                switch (choice) 
+                {
+                case '1':
+                    // Proceed to Scenario 2: Maze to escape the building
+                    cout << "You must solve the maze to escape the building!" << endl;
+                    Maze mazeOut(2);
+                    mazeOut.play();
+                    currentScenario = 4;
+                    break;
+                case '2':
+                    saveGame();
+                    break;
+                case '3':
+                    // Exit to main menu
+                    delete playerCharacter;
+                    playerCharacter = nullptr;
+                    gameInProgress = false;
+                    break;
+                default:
+                    cout << "Invalid input! Please select 1, 2, or 3." << endl;
+                    break;
+                }
+            } 
+            else if (currentScenario == 4) 
+            {
+                // Game completed
+                cout << "Congratulations! You have successfully completed the game!" << endl;
+                delete playerCharacter;
+                playerCharacter = nullptr;
+                gameInProgress = false;
             }
         }
-        delete playerCharacter; // Clean up dynamically allocated memory
-    }        
-    else {
+    } 
+    else 
+    {
         cout << "Error selecting character." << endl;
     }
 }
@@ -102,48 +261,284 @@ void startNewGame() {
         // Battle system
         //character opponent();
 
-void loadGame() {
-    ifstream infile("savegame.txt");  
-    if (!infile) {
-        cout << "No saved game found." << endl;
+void saveGame() 
+{
+    if (playerCharacter == nullptr) 
+    {
+        cout << "No game in progress to save." << endl;
         return;
     }
 
-    string name;
-    int health, maxHealth, attack, defence, intelligence;
-    int currentScenario;
-
-    // Read the character data from savegame.txt
-    infile >> name >> health >> attack >> defence >> intelligence >> currentScenario;
-
-    // Initialize the character based on loaded data
-    character* playerCharacter = new character(name, health, attack, defence, intelligence);
-    cout << "Loaded character: " << playerCharacter->getName() << endl;
-    playerCharacter->displayStats();
-    
-    // Load game state (e.g., current scenario)
-    Maze maze(currentScenario);
-    maze.play(); // Enter the maze gameplay
-
-    delete playerCharacter; // Clean up dynamically allocated memory
-}       
-        
-void saveGame(character* playerCharacter, int currentScenario) {
     ofstream outfile("savegame.txt");
-    if (outfile) {
+    if (outfile) 
+    {
         outfile << playerCharacter->getName() << " "
                 << playerCharacter->getHealth() << " "
                 << playerCharacter->getAttack() << " "
                 << playerCharacter->getDefence() << " "
                 << playerCharacter->getIntelligence() << " "
                 << currentScenario << endl;
+
+        // Save specialAbility and abilityInfo
+        outfile << playerCharacter->getSpecialAbility() << endl;
+        outfile << playerCharacter->getAbilityInfo() << endl;
+
         cout << "Game saved successfully!" << endl;
-    }
-    else {
+    } 
+    else 
+    {
         cout << "Error saving the game." << endl;
     }
 }
-                             
+
+void loadGame() 
+{
+    ifstream infile("savegame.txt");
+    if (!infile) 
+    {
+        cout << "No saved game found." << endl;
+        return;
+    }
+
+    string charType;
+    int health, attack, defence, intelligence;
+    int loadedScenario;
+    string specialAbility;
+    string abilityInfo;
+
+    // Read the character data from savegame.txt
+    infile >> charType >> health >> attack >> defence >> intelligence >> loadedScenario;
+    infile.ignore(); // Ignore the newline after the last integer
+
+    getline(infile, specialAbility);
+    getline(infile, abilityInfo);
+
+    // Initialize the character based on loaded data
+    if (charType == "Athlete") 
+    {
+        playerCharacter = new athlete();
+    } 
+    else if (charType == "Hacker") 
+    {
+        playerCharacter = new hacker();
+    } 
+    else if (charType == "Rebel") 
+    {
+        playerCharacter = new rebel();
+    } 
+    else 
+    {
+        cout << "Unknown character type in save file." << endl;
+        return;
+    }
+
+    playerCharacter->setHealth(health);
+    playerCharacter->setAttack(attack);
+    playerCharacter->setDefence(defence);
+    playerCharacter->setIntelligence(intelligence);
+
+    playerCharacter->setSpecialAbility(specialAbility);
+    playerCharacter->setAbilityInfo(abilityInfo);
+
+    currentScenario = loadedScenario;
+
+    cout << "Loaded character: " << playerCharacter->getName() << endl;
+    playerCharacter->displayStats();
+
+    // Continue the game from the saved scenario
+    bool gameInProgress = true;
+    while (gameInProgress) 
+    {
+        // Present options to the player based on current scenario
+        cout << "\nWhat would you like to do next?" << endl;
+        if (currentScenario == 0) 
+        {
+            cout << "1. Search for the key." << endl;
+            cout << "2. Save game." << endl;
+            cout << "3. Exit to main menu." << endl;
+            char choice;
+            cin >> choice;
+            switch (choice) 
+            {
+            case '1':
+                // Check if the character is a rebel
+                if (dynamic_cast<rebel*>(playerCharacter) == nullptr) {
+                    // If not a rebel, search for the key
+                    int roomResult = Rmain(playerCharacter);
+                    if (roomResult == 1) 
+                    {
+                        // Game over
+                        cout << "Game over. You failed to find the key or were defeated." << endl;
+                        delete playerCharacter;
+                        playerCharacter = nullptr;
+                        gameInProgress = false;
+                    } 
+                    else 
+                    {
+                        cout << "You found the key!" << endl;
+                        currentScenario = 1;
+                    }
+                } 
+                else 
+                {
+                    cout << "As a rebel, you can pick locks and skip finding the key." << endl;
+                    currentScenario = 1;
+                }
+                break;
+            case '2':
+                saveGame();
+                break;
+            case '3':
+                // Exit to main menu
+                delete playerCharacter;
+                playerCharacter = nullptr;
+                gameInProgress = false;
+                break;
+            default:
+                cout << "Invalid input! Please select 1, 2, or 3." << endl;
+                break;
+            }
+        } 
+        else if (currentScenario == 1) 
+        {
+            cout << "1. Enter the maze to reach the professor's office." << endl;
+            cout << "2. Save game." << endl;
+            cout << "3. Exit to main menu." << endl;
+            char choice;
+            cin >> choice;
+            switch (choice) 
+            {
+            case '1':
+                // Proceed to Scenario 1: Maze to enter the professor's office
+                cout << "You must solve the maze to enter the professor's office!" << endl;
+                Maze mazeEnter(1);
+                mazeEnter.play();
+                currentScenario = 2;
+                break;
+            case '2':
+                saveGame();
+                break;
+            case '3':
+                // Exit to main menu
+                delete playerCharacter;
+                playerCharacter = nullptr;
+                gameInProgress = false;
+                break;
+            default:
+                cout << "Invalid input! Please select 1, 2, or 3." << endl;
+                break;
+            }
+        } 
+        else if (currentScenario == 2) 
+        {
+            cout << "1. Confront the professor." << endl;
+            cout << "2. Save game." << endl;
+            cout << "3. Exit to main menu." << endl;
+            char choice;
+            cin >> choice;
+            switch (choice) 
+            {
+            case '1':
+                // Battle with the professor
+                character professor("Professor", 50, rand() % 10 + 1, rand() % 10 + 1, rand() % 10 + 1);
+
+                // Ensure the professor has at least two stats above 5
+                int statsAboveFive = 0;
+                if (professor.getAttack() > 5) statsAboveFive++;
+                if (professor.getDefence() > 5) statsAboveFive++;
+                if (professor.getIntelligence() > 5) statsAboveFive++;
+                while (statsAboveFive < 2) 
+                {
+                    int statToIncrease = rand() % 3;
+                    switch (statToIncrease) 
+                    {
+                    case 0:
+                        professor.setAttack(rand() % 5 + 6);
+                        break;
+                    case 1:
+                        professor.setDefence(rand() % 5 + 6);
+                        break;
+                    case 2:
+                        professor.setIntelligence(rand() % 5 + 6);
+                        break;
+                    }
+                    statsAboveFive = 0;
+                    if (professor.getAttack() > 5) statsAboveFive++;
+                    if (professor.getDefence() > 5) statsAboveFive++;
+                    if (professor.getIntelligence() > 5) statsAboveFive++;
+                }
+
+                cout << "You have encountered the professor!" << endl;
+
+                bool battleResult = BATTLE_RESULT(playerCharacter, professor);
+                if (!battleResult) 
+                {
+                    cout << "You were defeated by the professor. Game over." << endl;
+                    delete playerCharacter;
+                    playerCharacter = nullptr;
+                    gameInProgress = false;
+                } 
+                else 
+                {
+                    cout << "You defeated the professor and got the exam papers!" << endl;
+                    currentScenario = 3;
+                }
+                break;
+            case '2':
+                saveGame();
+                break;
+            case '3':
+                // Exit to main menu
+                delete playerCharacter;
+                playerCharacter = nullptr;
+                gameInProgress = false;
+                break;
+            default:
+                cout << "Invalid input! Please select 1, 2, or 3." << endl;
+                break;
+            }
+        } 
+        else if (currentScenario == 3) 
+        {
+            cout << "1. Escape through the maze." << endl;
+            cout << "2. Save game." << endl;
+            cout << "3. Exit to main menu." << endl;
+            char choice;
+            cin >> choice;
+            switch (choice) 
+            {
+            case '1':
+                // Proceed to Scenario 2: Maze to escape the building
+                cout << "You must solve the maze to escape the building!" << endl;
+                Maze mazeOut(2);
+                mazeOut.play();
+                currentScenario = 4;
+                break;
+            case '2':
+                saveGame();
+                break;
+            case '3':
+                // Exit to main menu
+                delete playerCharacter;
+                playerCharacter = nullptr;
+                gameInProgress = false;
+                break;
+            default:
+                cout << "Invalid input! Please select 1, 2, or 3." << endl;
+                break;
+            }
+        } 
+        else if (currentScenario == 4) 
+        {
+            // Game completed
+            cout << "Congratulations! You have successfully completed the game!" << endl;
+            delete playerCharacter;
+            playerCharacter = nullptr;
+            gameInProgress = false;
+        }
+    }
+}
+                        
 int main() {
     character* playerCharacter = nullptr; // Declare playerCharacter globally accessible
     int currentScenario = 1; // Declare currentScenario globally accessible
@@ -156,21 +551,15 @@ int main() {
                 break;
             
             case '2':
-                // Ensure a character is selected before saving
-                if (playerCharacter) {
-                    saveGame(playerCharacter, currentScenario); // Save progress
-                }
-                else {
-                    cout << "No game in progress to save." << endl;
-                }
+                saveGame(); // Save the game
                 break;
-
             case '3':
                 loadGame(); // Load the previous saved game progress
                 break;
-            
+            case '4':
+                exit(0);
             default:
-                cout << "Invalid input! Please select 1, 2, or 3." << endl;
+                cout << "Invalid input! Please select 1, 2, 3 or 4." << endl;
                 break;
         }        
         choice = menu(); // Show the menu again
