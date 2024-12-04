@@ -15,7 +15,8 @@ character* playerCharacter = nullptr;
 int currentScenario = 0;
 
 // Print the selection menu
-char menu() {
+char menu() 
+{
     char choice;
     cout << "**********************************" << endl;
     cout << "Welcome to HKU mission impossible!" << endl;
@@ -31,7 +32,8 @@ char menu() {
     return choice;
 }
 
-void backgroundStory() {
+void backgroundStory() 
+{
     cout << "A rumor spreads through the campus about the professor losing his office key..." << endl;
     this_thread::sleep_for(chrono::seconds(1)); // Delay for 1 second
     cout << "Whispers suggest that finding the key grants access to exam papers for better results..." << endl;
@@ -53,11 +55,11 @@ void saveGame()
     if (outfile)
     {
         outfile << playerCharacter->getName() << " "
-            << playerCharacter->getHealth() << " "
-            << playerCharacter->getAttack() << " "
-            << playerCharacter->getDefence() << " "
-            << playerCharacter->getIntelligence() << " "
-            << currentScenario << endl;
+                << playerCharacter->getHealth() << " "
+                << playerCharacter->getAttack() << " "
+                << playerCharacter->getDefence() << " "
+                << playerCharacter->getIntelligence() << " "
+                << currentScenario << endl;
 
         // Save specialAbility and abilityInfo
         outfile << playerCharacter->getSpecialAbility() << endl;
@@ -71,7 +73,8 @@ void saveGame()
     }
 }
 
-void startNewGame() {
+void startNewGame() 
+{
     backgroundStory();
 
     // Initialize the rooms
@@ -194,8 +197,7 @@ void startNewGame() {
                 {
                     // Wrap code in braces
                     // Battle with the professor
-                    character professor("Professor", 50, rand() % 10 + 1,
-                        rand() % 10 + 1, rand() % 10 + 1);
+                    character professor("Professor", 50, rand() % 10 + 1, rand() % 10 + 1, rand() % 10 + 1);
 
                     // Ensure the professor has at least two stats above 5
                     int statsAboveFive = 0;
@@ -348,7 +350,6 @@ void loadGame()
     playerCharacter->setAttack(attack);
     playerCharacter->setDefence(defence);
     playerCharacter->setIntelligence(intelligence);
-
     playerCharacter->setSpecialAbility(specialAbility);
     playerCharacter->setAbilityInfo(abilityInfo);
 
