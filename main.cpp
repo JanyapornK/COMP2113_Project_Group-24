@@ -74,6 +74,14 @@ void saveGame()
 void startNewGame() {
     backgroundStory();
 
+    // Initialize the rooms
+    vector<Room> places = {
+    {"Canteen", false, false, false},
+    {"Canteen", false, false, false},
+    {"Canteen", false, false, false},
+    {"Canteen", false, false, false},
+};
+    
     // Choose the character
     playerCharacter = character::selectCharacter(); // Use the global variable
     currentScenario = 0; // Set initial scenario
