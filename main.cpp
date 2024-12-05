@@ -167,8 +167,11 @@ void startNewGame()
                     // Proceed to Scenario 1: Maze to enter the professor's office
                     cout << "You must solve the maze to enter the professor's office!" << endl;
                     Maze mazeEnter(1);
-                    mazeEnter.play();
-                    currentScenario = 2;
+                    if (mazeEnter.play()){
+                        currentScenario = 2;
+                    }else{
+                        currentScenario = 1;
+                    }
                     break;
                 }
                 case '2':
@@ -272,8 +275,11 @@ void startNewGame()
                     // Proceed to Scenario 2: Maze to escape the building
                     cout << "You must solve the maze to escape the building!" << endl;
                     Maze mazeOut(2);
-                    mazeOut.play();
-                    currentScenario = 4;
+                    if (mazeOut.play()){
+                        currentScenario = 4;
+                    }else{
+                        currentScenario = 3;
+                    }
                     break;
                 }
                 case '2':
