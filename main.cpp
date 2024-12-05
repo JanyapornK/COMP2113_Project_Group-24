@@ -37,31 +37,32 @@ void backgroundStory()
 {
     cout << "Professor X finds himself in a predicament one morning as he was heading towards his office at HKU." << endl;
     this_thread::sleep_for(chrono::seconds(1)); // Delay for 1 second
-    cout << "As careful as he was, he never expected such as catastrophe to happen ..." << endl;
+    cout << "As careful as he was, he never expected such a catastrophe to happen ..." << endl;
     this_thread::sleep_for(chrono::seconds(3)); // Delay for 3 second
     cout <<"\"Damn it!!!, Where are they? I am sure I have them with me !!!\", said the professor." << endl;
     this_thread::sleep_for(chrono::seconds(1)); // Delay for 1 second
-    cout <<"\"...sigh, I have to report back to the general office don't I... I will definitely be the laughing stock of the year...\""<< endl;
+    cout <<"\"...sigh, I have to report back to the general office, don't I... I will definitely be the laughingstock of the year...\""<< endl;
     this_thread::sleep_for(chrono::seconds(2)); // Delay for 2 second
-    cout <<"\"... I have been always been well respected amongst my collegues, I can't believe my reputation will be ruined just like that... I will never hear the end of this!!!\"" <<endl;
+    cout <<"\"... I have always been well respected amongst my colleagues, I can't believe my reputation will be ruined just like that...\"" <<endl;
+    cout <<"\"I will never hear the end of this!!!\"" <<endl;
     this_thread::sleep_for(chrono::seconds(2)); // Delay for 2 second
     cout <<"\"... Wait... \"" <<endl;
     this_thread::sleep_for(chrono::seconds(1)); // Delay for 1 second
-    cout <<"\"Who says that I need to report it? I still have my backup keys... and if a collegue manages to find them, they will just return them to me!\""<<endl;
+    cout <<"\"Who says that I need to report it? I still have my backup keys... and if a colleague manages to find them, they will just return them to me!\""<<endl;
     this_thread::sleep_for(chrono::seconds(2)); // Delay for 2 second
     cout <<"\"What are the odds some lone kid managed to find them and break into my office anyways? I will take my chances, no one will know... yeah ... no one will...\""<<endl;
     this_thread::sleep_for(chrono::seconds(3)); // Delay for 3 second
-    cout << "A rumor spreads through the campus about the professor losing his office key..." << endl;
+    cout << "A rumour spreads through the campus about the professor losing his office key..." << endl;
     this_thread::sleep_for(chrono::seconds(1)); // Delay for 1 second
     cout << "Finding the key will grant students the opportunity to steal this semester's exam papers! Oh what one will do for better results..." << endl;
     this_thread::sleep_for(chrono::seconds(1)); // Delay for 1 second
     cout << "You, along with other students are tempted by the opportunity and embark on a clandestine quest to locate the missing key." << endl;
     this_thread::sleep_for(chrono::seconds(1)); // Delay for 1 second
-    cout << "But you just so happen to know more about the professor than any of your peers, and narrowed down the possiblilties one by one..." << endl;
+    cout << "But you just so happen to know more about the professor than any of your peers, and narrowed down the possibilities one by one..." << endl;
     this_thread::sleep_for(chrono::seconds(1)); // Delay for 1 second    
     cout << "In the end, you finalised the 4 possible locations: the canteen, the library, the classroom, and the teacher's common room." << endl;
     this_thread::sleep_for(chrono::seconds(1)); // Delay for 1 second   
-    cout << "Now that it is late a night, it is the perfect time to strike." << endl;
+    cout << "Now that it is late at night, it is the perfect time to strike." << endl;
     this_thread::sleep_for(chrono::seconds(1)); // Delay for 1 second
     cout << "Now hurry up and be the first person to find the key!!!" << endl;
 }
@@ -156,7 +157,7 @@ void startNewGame()
                     else
                     {
                         cout << "As a rebel, you have always known how to pick locks. Why spend time finding the key?" << endl;
-                        cout << "You have decided to go straight to office and try your luck." << endl;
+                        cout << "You have decided to go straight to the office and try your luck." << endl;
                         currentScenario = 1;
                     }
                     break;
@@ -214,14 +215,14 @@ void startNewGame()
                 }
             }
             else if (currentScenario == 2)
-            {   this_thread::sleep_for(chrono::seconds(1)); // Delay for 1 second
+            {   this_thread::sleep_for(chrono::seconds(3)); // Delay for 3 second
                 cout << "It is now way past midnight, there is no way anyone will be here at this hour, just grab the papers a go..." << endl;
                 this_thread::sleep_for(chrono::seconds(2)); // Delay for 2 second
                 cout << "\"Hey! What are you doing in my office!!!\"" << endl;
                 this_thread::sleep_for(chrono::seconds(1)); // Delay for 1 second
                 cout << "Suprised, your head slowly turn towards the supposedly empty chair. Your eyes locked onto the furious professor with bloodshot eyes." << endl;
                 this_thread::sleep_for(chrono::seconds(1)); // Delay for 1 second
-                cout << "Luckily, you are wearing a mask and heavily disgused. He can't make out who you are. But there is no turning back now, what will you do?" << endl;
+                cout << "Luckily, you are wearing a mask and heavily disguised. He can't make out who you are. But there is no turning back now, what will you do?" << endl;
                 this_thread::sleep_for(chrono::seconds(1)); // Delay for 1 second
                 cout << "1. Confront the professor." << endl;
                 cout << "2. Save game." << endl;
@@ -335,7 +336,7 @@ void startNewGame()
                 // Game completed
                 cout << "Congratulations! You have successfully completed the game!" << endl;
                 cout << "As a consequence, the professor was immediately fired for his incompetence. There is no way he can escape liability." << endl;
-                cout << "All his worst nightmares came true, being ridiculed by his ex-collegues, never to work as a professor ever again." << endl;
+                cout << "All his worst nightmares came true, being ridiculed by his ex-colleagues, never to work as a professor ever again." << endl;
                 delete playerCharacter;
                 playerCharacter = nullptr;
                 gameInProgress = false;
