@@ -96,6 +96,7 @@ bool Maze::play() {
       cout << "Invalid move! Try again." << endl;
     }
   }
+  cout << endl;
   displayMaze();
   cout << "Congratulations! You have reached the exit!" << endl;
   return true;
