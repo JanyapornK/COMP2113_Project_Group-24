@@ -9,7 +9,7 @@ DEPS = main.h character.h room.h maze.h battle.h
 all: $(EXEC)
 
 $(EXEC): $(OBJS)
-  $(CXX) $(CXXFLAGS) -o $(EXEC) $(OBJS)
+	$(CXX) $(CXXFLAGS) -o $(EXEC) $(OBJS)
 
 %.o: %.cpp $(DEPS)
 	$(CXX) $(CXXFLAGS) -c $< -o $@
