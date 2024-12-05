@@ -32,7 +32,7 @@ void printChoices(const vector <Room> &places){
     if (places[i].arrived==false){
       counter+=1;
       if (counter != count){
-        cout<<places[i].name<<"/ ";
+        cout<<places[i].name<<" / ";
       }else if (counter == count){
       cout<<places[i].name<<endl;
       }
