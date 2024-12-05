@@ -73,7 +73,7 @@ character* character::selectCharacter()
 			player = new rebel();
 			break;
 		default:
-			std::cout << "Invalid choice, please enter 1,2 or 3." << std::endl;
+			std::cout << "Invalid choice, please enter 1, 2 or 3." << std::endl;
 			continue;
 		}
 
@@ -82,7 +82,7 @@ character* character::selectCharacter()
 
 		// Confirmation input
 		char confirm;
-		std::cout << "Do you want to select this character? (y/n)";
+		std::cout << "Do you want to select this character? (y/n): ";
 		std::cin >> confirm;
 
 		if (confirm == 'y' || confirm == 'Y')
