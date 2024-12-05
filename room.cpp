@@ -13,11 +13,12 @@ string upperToLower(string &word){
   for (int i=0;i<word.length();i++){
     if (word[i]>=65 && word[i]<=90){
       word[i]=word[i]+32;
+    }
   }
     return word;
 }
 
-void printChoices(const vector <Room> places){
+void printChoices(const vector <Room> &places){
   cout<<"Where are the keys...?"<<endl;
   cout<<"Where would you go? (Enter the place)";
   int count=0; //no of room not yet arrived
@@ -128,7 +129,8 @@ int Rmain(character *playerCharacter){
       for (int i = 0; i < places.size(); i++)
       {
         string roomname = places[i].name;
-        transform(roomname.begin(), roomname.end(), roomname.begin(), tolower());
+        //transform(roomname.begin(), roomname.end(), roomname.begin(), tolower());
+        roomname=upperToLower(roomname);
         if (roomname == input)
         {
           roomIndex = i;
