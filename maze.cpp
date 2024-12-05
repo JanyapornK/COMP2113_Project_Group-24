@@ -82,18 +82,20 @@ bool Maze::isExitReached() const {
   return mazeLayout[playerR][playerC+1] == 'E';
 }
 
-void Maze::play() {
+bool Maze::play() {
   cout << "Welcome to the Maze! Use w (up), a (left), s (down), d (right) to move." << endl;
   cout << "P is the your position, and E is the position of exit." << endl;
   while (!isExitReached()) {
     displayMaze();  // Show the maze
-    cout << "Enter your move: ";
+    cout << "Enter your move (q to exit): ";
     char moveChar;
     cin >> moveChar;
-    if (!move(moveChar)) {
+    if (moveChar == 'q'){
+      return false;
+    } else if(!move(moveChar)) {
       cout << "Invalid move! Try again." << endl;
     }
   }
   cout << "Congratulations! You have reached the exit!" << endl;
-  return;
+  return true;
 }
