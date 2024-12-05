@@ -9,7 +9,13 @@
 
 using namespace std;
 
-
+string upperToLower(string &word){
+  for (int i=0;i<word.length();i++){
+    if (word[i]>=65 && word[i]<=90){
+      word[i]=word[i]+32;
+  }
+    return word;
+}
 void printChoices(const vector<Room>& places)
 {
   cout << "Where are the keys...?" << endl;
@@ -49,7 +55,9 @@ bool checkValidInput(const string& input, const vector<Room>& places)
   for (Room r : places)
   {
     roomname = r.name;
-    transform(roomname.begin(), roomname.end(), roomname.begin(), tolower); 
+    //transform(roomname.begin(), roomname.end(), roomname.begin(), tolower); 
+    roomname=upperToLower(roomname);
+
     if (roomname == input && r.arrived == false)
     {
       return true;
@@ -115,8 +123,8 @@ int Rmain(character *playerCharacter){
     printChoices(places); // Print unvisited rooms
     string input;
     getline(cin >> ws, input);
-    transform(input.begin(), input.end(), input.begin(), tolower); 
-    
+    //transform(input.begin(), input.end(), input.begin(), tolower); 
+    input=upperToLower(input);
     if (!checkValidInput(input, places))
     {
       cout << "The place is invalid or already visited, Choose another place to go... (Re-enter a place)" << endl; 
@@ -127,7 +135,8 @@ int Rmain(character *playerCharacter){
       for (int i = 0; i < places.size(); i++)
       {
         string roomname = places[i].name;
-        transform(roomname.begin(), roomname.end(), roomname.begin(), tolower);
+        //transform(roomname.begin(), roomname.end(), roomname.begin(), tolower);
+        roomname=upperToLower(roomname);
         if (roomname == input)
         {
           roomIndex = i;
