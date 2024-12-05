@@ -9,6 +9,7 @@
 
 using namespace std;
 
+//change the all character of the word to lower case
 string upperToLower(string &word){
   for (int i=0;i<word.length();i++){
     if (word[i]>=65 && word[i]<=90){
@@ -18,6 +19,7 @@ string upperToLower(string &word){
     return word;
 }
 
+//print out all choices that can be chosen by user
 void printChoices(const vector <Room> &places){
   cout<<"Where are the keys...?"<<endl;
   cout<<"Where would you go? (Enter the place) ";
@@ -42,7 +44,7 @@ void printChoices(const vector <Room> &places){
   
     
 
-  
+//check if the input of the user is valid  
 bool checkValidInput(const string& input, const vector<Room>& places)
 {
   string roomname;
