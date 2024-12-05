@@ -117,12 +117,11 @@ void startNewGame()
     {
         cout << "You have selected the following character:" << endl;
         playerCharacter->displayStats();
-
         bool gameInProgress = true;
+        cout << "\nWhat would you like to do next?" << endl;
         while (gameInProgress)
         {
             // Present options to the player based on current scenario
-            cout << "\nWhat would you like to do next?" << endl;
             if (currentScenario == 0)
             {
                 cout << "1. Search for the key." << endl;
@@ -216,7 +215,7 @@ void startNewGame()
             }
             else if (currentScenario == 2)
             {   this_thread::sleep_for(chrono::seconds(3)); // Delay for 3 second
-                cout << "It is now way past midnight, there is no way anyone will be here at this hour, just grab the papers a go..." << endl;
+                cout << "It is now way past midnight, there is no way anyone will be here at this hour, just grab the papers and go..." << endl;
                 this_thread::sleep_for(chrono::seconds(2)); // Delay for 2 second
                 cout << "\"Hey! What are you doing in my office!!!\"" << endl;
                 this_thread::sleep_for(chrono::seconds(1)); // Delay for 1 second
@@ -224,6 +223,7 @@ void startNewGame()
                 this_thread::sleep_for(chrono::seconds(1)); // Delay for 1 second
                 cout << "Luckily, you are wearing a mask and heavily disguised. He can't make out who you are. But there is no turning back now, what will you do?" << endl;
                 this_thread::sleep_for(chrono::seconds(1)); // Delay for 1 second
+                cout << "\nWhat would you like to do next?" << endl;
                 cout << "1. Confront the professor." << endl;
                 cout << "2. Save game." << endl;
                 cout << "3. Exit to main menu." << endl;
