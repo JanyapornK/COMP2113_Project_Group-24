@@ -80,9 +80,9 @@ void startNewGame()
     // Initialize the rooms
     vector<Room> places = {
     {"Canteen", false, false},
-    {"Canteen", false, false},
-    {"Canteen", false, false},
-    {"Canteen", false, false},
+    {"Library", false, false},
+    {"Classroom", false, false},
+    {"Common room", false, false},
     };
     
     // Choose the character
