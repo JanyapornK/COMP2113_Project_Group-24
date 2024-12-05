@@ -58,11 +58,11 @@ void backgroundStory()
     cout << "You, along with other students are tempted by the opportunity and embark on a clandestine quest to locate the missing key." << endl;
     this_thread::sleep_for(chrono::seconds(1)); // Delay for 1 second
     cout << "But you just so happen to know more about the professor than any of your peers, and narrowed down the possiblilties one by one..." << endl;
-    this_thread::sleep_for(chrono::seconds(1); // Delay for 1 second    
+    this_thread::sleep_for(chrono::seconds(1)); // Delay for 1 second    
     cout << "In the end, you finalised the 4 possible locations: the canteen, the library, the classroom, and the teacher's common room." << endl;
-    this_thread::sleep_for(chrono::seconds(1); // Delay for 1 second   
+    this_thread::sleep_for(chrono::seconds(1)); // Delay for 1 second   
     cout << "Now that it is late a night, it is the perfect time to strike." << endl;
-    this_thread::sleep_for(chrono::seconds(1); // Delay for 1 second
+    this_thread::sleep_for(chrono::seconds(1)); // Delay for 1 second
     cout << "Now hurry up and be the first person to find the key!!!" << endl;
 }
 
@@ -216,13 +216,13 @@ void startNewGame()
             else if (currentScenario == 2)
             {   this_thread::sleep_for(chrono::seconds(1); // Delay for 1 second
                 cout << "It is now way past midnight, there is no way anyone will be here at this hour, just grab the papers a go..." << endl;
-                this_thread::sleep_for(chrono::seconds(2); // Delay for 2 second
+                this_thread::sleep_for(chrono::seconds(2)); // Delay for 2 second
                 cout << "\"Hey! What are you doing in my office!!!\"" << endl;
-                this_thread::sleep_for(chrono::seconds(1); // Delay for 1 second
+                this_thread::sleep_for(chrono::seconds(1)); // Delay for 1 second
                 cout << "Suprised, your head slowly turn towards the supposedly empty chair. Your eyes locked onto the furious professor with bloodshot eyes." << endl;
-                this_thread::sleep_for(chrono::seconds(1); // Delay for 1 second
+                this_thread::sleep_for(chrono::seconds(1)); // Delay for 1 second
                 cout << "Luckily, you are wearing a mask and heavily disgused. He can't make out who you are. But there is no turning back now, what will you do?" << endl;
-                this_thread::sleep_for(chrono::seconds(1); // Delay for 1 second
+                this_thread::sleep_for(chrono::seconds(1)); // Delay for 1 second
                 cout << "1. Confront the professor." << endl;
                 cout << "2. Save game." << endl;
                 cout << "3. Exit to main menu." << endl;
