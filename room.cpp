@@ -16,39 +16,47 @@ string upperToLower(string &word){
   }
     return word;
 }
-void printChoices(const vector<Room>& places)
-{
-  cout << "Where are the keys...?" << endl;
-  cout << "Where would you go? (Enter the place)";
-  int count = 0; // no. of room not yet arrived
-  
-  for (int i = 0; i < places.size(); i++)
-  {
-    if (places[i].arrived == false)
-    {
-      count += 1;
-    }
+
+int findIndex(string input, string name[]){
+    int roomIndex = -1;
+      for (int i = 0; i < places.size(); i++)
+      {
+        string roomname = places[i].name;
+        roomname=upperToLower(roomname);
+        if (roomname == input)
+        {
+          roomIndex = i;
+          break;
+        }
   }
-  
-  int counter = 0;
-  // Print places that not yet arrived
-  for (int i = 0; i < places.size(); i++)
-  {
-    if (places[i].arrived == false)
-    {
-      counter += 1;
-      if (counter != count)
-      {
-        cout << places[i].name << " / ";
-      }
-      else if (counter == count)
-      {
-      cout << places[i].name << endl;
+  return roomIndex;
+}
+
+void printChoices(const vector <Room> places){
+  cout<<"Where are the keys...?"<<endl;
+  cout<<"Where would you go? (Enter the place)";
+  int count=0; //no of room not yet arrived
+  for (int i=0;i<places.size();i++){
+    if (places[i].arrived==false){
+      count+=1;}
+  }
+  int counter=0;
+  //print places that not yet arrived
+  for (int i=0;i<places.size();i++){
+    if (places[i].arrived==false){
+      counter+=1;
+      if (counter != count){
+        cout<<places[i].name<<"/ ";
+      }else if (counter == count){
+      cout<<places[i].name<<endl;
       }
     }
   }
 }
+  
+    
 
+  
 bool checkValidInput(const string& input, const vector<Room>& places)
 {
   string roomname;
@@ -131,17 +139,7 @@ int Rmain(character *playerCharacter){
     }
     else
     {
-      int roomIndex = -1;
-      for (int i = 0; i < places.size(); i++)
-      {
-        string roomname = places[i].name;
-        //transform(roomname.begin(), roomname.end(), roomname.begin(), tolower);
-        roomname=upperToLower(roomname);
-        if (roomname == input)
-        {
-          roomIndex = i;
-          break;
-        }
+      int roomIndex=findIndex(input,name);
       }
   
       if (roomIndex == -1)
