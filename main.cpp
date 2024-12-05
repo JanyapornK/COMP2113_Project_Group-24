@@ -83,7 +83,7 @@ void startNewGame()
     {"Canteen", false, false, false},
     {"Canteen", false, false, false},
     {"Canteen", false, false, false},
-};
+    };
     
     // Choose the character
     playerCharacter = character::selectCharacter(); // Use the global variable
