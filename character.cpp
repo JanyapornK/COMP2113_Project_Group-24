@@ -105,7 +105,7 @@ character* character::selectCharacter()
 
 // Athlete class
 athlete::athlete()
-	: character("Athelete", 150, 25, 20, 5, "Smash", "Attacks have a 50% chance on dealing double damage.") {}
+	: character("Athlete", 150, 25, 20, 5, "Smash", "Attacks have a 50% chance on dealing double damage.") {}
 void athlete::useSpecialAbility()
 {
 	std::cout << name << " uses " << specialAbility << "!" << std::endl;
