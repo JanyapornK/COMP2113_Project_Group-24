@@ -111,7 +111,6 @@ void startNewGame()
                 {
                 case '1':
                 {
-                    // Wrap code in braces
                     // Check if the character is a rebel
                     if (dynamic_cast<rebel*>(playerCharacter) == nullptr)
                     {
@@ -163,13 +162,15 @@ void startNewGame()
                 {
                 case '1':
                 {
-                    // Wrap code in braces
                     // Proceed to Scenario 1: Maze to enter the professor's office
                     cout << "You must solve the maze to enter the professor's office!" << endl;
                     Maze mazeEnter(1);
-                    if (mazeEnter.play()){
+                    if (mazeEnter.play())
+                    {
                         currentScenario = 2;
-                    }else{
+                    }
+                    else
+                    {
                         currentScenario = 1;
                     }
                     break;
@@ -199,7 +200,6 @@ void startNewGame()
                 {
                 case '1':
                 {
-                    // Wrap code in braces
                     // Battle with the professor
                     character professor("Professor", 50, rand() % 10 + 1, rand() % 10 + 1, rand() % 10 + 1);
 
@@ -271,13 +271,15 @@ void startNewGame()
                 {
                 case '1':
                 {
-                    // Wrap code in braces
                     // Proceed to Scenario 2: Maze to escape the building
                     cout << "You must solve the maze to escape the building!" << endl;
                     Maze mazeOut(2);
-                    if (mazeOut.play()){
+                    if (mazeOut.play())
+                    {
                         currentScenario = 4;
-                    }else{
+                    }
+                    else
+                    {
                         currentScenario = 3;
                     }
                     break;
@@ -382,7 +384,6 @@ void loadGame()
             {
             case '1':
             {
-                // Wrap code in braces
                 // Check if the character is a rebel
                 if (dynamic_cast<rebel*>(playerCharacter) == nullptr)
                 {
@@ -434,7 +435,6 @@ void loadGame()
             {
             case '1':
             {
-                // Wrap code in braces
                 // Proceed to Scenario 1: Maze to enter the professor's office
                 cout << "You must solve the maze to enter the professor's office!" << endl;
                 Maze mazeEnter(1);
@@ -467,7 +467,6 @@ void loadGame()
             {
             case '1':
             {
-                // Wrap code in braces
                 // Battle with the professor
                 character professor("Professor", 50, rand() % 10 + 1,
                     rand() % 10 + 1, rand() % 10 + 1);
@@ -540,7 +539,6 @@ void loadGame()
             {
             case '1':
             {
-                // Wrap code in braces
                 // Proceed to Scenario 2: Maze to escape the building
                 cout << "You must solve the maze to escape the building!" << endl;
                 Maze mazeOut(2);
