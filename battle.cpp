@@ -217,7 +217,7 @@ bool BATTLE_RESULT(character* player, character& opponent)
         
         // Opponent's actions
         int Action = DICE_ROLLING();
-        if (Action > 2 && opponent.getHealth() >= 20){
+        if (Action > 2 && opponent.getHealth() >= 15){
             cout << "Opponent Attacks." << endl;
             ATTACK_O(opponent, player);
         }
