@@ -46,7 +46,7 @@ void ATTACK(character* player, character& opponent)
     int Damage, Dice;
     Dice = DICE_ROLLING();
     Damage = Dice + player->getAttack() - opponent.getDefence(); //damage calculation
-    if (Dice >= 11)
+    if (Dice == 12)
         cout << "BONUS DAMAGE" << endl;
         Damage += Dice;
     
@@ -82,7 +82,7 @@ void ATTACK_O(character& opponent, character* player)
     int Damage, Dice;
     Dice = DICE_ROLLING();
     Damage = Dice + opponent.getAttack() - player->getDefence();
-    if (Dice >= 11)
+    if (Dice == 12)
     {
         cout << "BONUS DAMAGE" << endl;
         Damage += Dice;
