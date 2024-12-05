@@ -61,6 +61,14 @@ character* character::selectCharacter()
 		std::cout << "3: Rebel" << std::endl;
 		std::cout << "Enter the number of your choice: ";
 		std::cin >> choice;
+
+		while (!(std::cin >> choice))
+        	{
+            		std::cin.clear();
+            		// Ignore the rest of the line (up to 1000 characters or until newline)
+            		std::cin.ignore(1000, '\n');
+            		std::cout << "Invalid input. Please enter a number (1, 2, or 3): ";
+        	}
 		switch (choice)
 		{
 		case 1:
