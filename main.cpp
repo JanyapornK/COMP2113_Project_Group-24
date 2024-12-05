@@ -337,6 +337,7 @@ void startNewGame()
                 cout << "Congratulations! You have successfully completed the game!" << endl;
                 cout << "As a consequence, the professor was immediately fired for his incompetence. There is no way he can escape liability." << endl;
                 cout << "All his worst nightmares came true, being ridiculed by his ex-colleagues, never to work as a professor ever again." << endl;
+                cout<<endl;
                 delete playerCharacter;
                 playerCharacter = nullptr;
                 gameInProgress = false;
