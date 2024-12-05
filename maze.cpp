@@ -79,7 +79,7 @@ bool Maze::move(char direction) {
 }
 
 bool Maze::isExitReached() const {
-  return mazeLayout[playerR][playerC] == 'E';
+  return mazeLayout[playerR][playerC+1] == 'E';
 }
 
 void Maze::play() {
