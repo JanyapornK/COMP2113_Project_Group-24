@@ -9,11 +9,6 @@
 
 using namespace std;
 
-struct Room{
-  string name;
-  bool key;
-  bool arrived; //t=user already got in before
-};
 
 void printChoices(const vector<Room>& places)
 {
