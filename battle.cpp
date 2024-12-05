@@ -46,7 +46,7 @@ void ATTACK(character* player, character& opponent)
     int Damage, Dice;
     Dice = DICE_ROLLING();
     Damage = Dice + player->getAttack() - opponent.getDefence(); //damage calculation
-    if (Dice >= 10)
+    if (Dice >= 11)
         cout << "BONUS DAMAGE" << endl;
         Damage += Dice;
     
@@ -103,7 +103,7 @@ void INT(character* player, character& opponent)
     //Second battle mechanism, intimidating, basically heals and possibly deals damage)
     // (takes in Intelligence of both Player and Opponent, and their Healths, 
     int Rolled_No = DICE_ROLLING();
-    if (Rolled_No >= 9){
+    if (Rolled_No >= 11){
             opponent.setHealth(opponent.getHealth() - Rolled_No / 2);
             cout << "Congrats, bonus action. Damage done to Opponent!" << endl;
             cout << "Opponent's HP = " << opponent.getHealth() << endl;
@@ -136,7 +136,7 @@ void INT_O(character& opponent, character* player)
     //same as above, different perspective, reversal of roles
     int Rolled_No = DICE_ROLLING();
     
-    if (Rolled_No >= 11)
+    if (Rolled_No == 12)
     {
         player->setHealth(player->getHealth() - Rolled_No / 2);
         cout << "Oh no, bonus action, damage received!" << endl;
