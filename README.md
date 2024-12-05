@@ -1,11 +1,11 @@
 # Group Project COMP2113 
 **The team:** 
 
-Chu Wai Lam UID: 3036219217. 
+Chu Wai Lam UID: 3036219217
 
-Lau Ting Hei Hayley UID: 3036224573.
+Lau Ting Hei Hayley UID: 3036224573
 
-Ng Chi Kin Jacky UID: 3036080214.
+Ng Chi Kin Jacky UID: 3036080214
 
 Ching Chi Cheung Oliver UID: 3036085252
 
