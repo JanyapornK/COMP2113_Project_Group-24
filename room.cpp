@@ -20,7 +20,7 @@ string upperToLower(string &word){
 
 void printChoices(const vector <Room> &places){
   cout<<"Where are the keys...?"<<endl;
-  cout<<"Where would you go? (Enter the place)";
+  cout<<"Where would you go? (Enter the place) ";
   int count=0; //no of room not yet arrived
   for (int i=0;i<places.size();i++){
     if (places[i].arrived==false){
