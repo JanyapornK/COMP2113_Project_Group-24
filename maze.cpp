@@ -84,6 +84,7 @@ bool Maze::isExitReached() const {
 
 void Maze::play() {
   cout << "Welcome to the Maze! Use w (up), a (left), s (down), d (right) to move." << endl;
+  cout << "P is the your position, and E is the position of exit." << endl;
   while (!isExitReached()) {
     displayMaze();  // Show the maze
     cout << "Enter your move: ";
