@@ -16,7 +16,7 @@ Maze::Maze(int scenario){
       "# ####### #",
       "#    #    #",
       "# ##      E",
-      "##########F"
+      "###########"
     };
     // Set the player's starting position ('P')
     playerR = 3;
