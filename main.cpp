@@ -25,6 +25,7 @@ char menu()
     cout << "2. Save game." << endl;
     cout << "3. Load game." << endl;
     cout << "4. Exit." << endl;
+    cout << "Enter the number." << endl;
 
     cin >> choice;
     cout << endl;
