@@ -214,7 +214,7 @@ void startNewGame()
                 }
             }
             else if (currentScenario == 2)
-            {   this_thread::sleep_for(chrono::seconds(1); // Delay for 1 second
+            {   this_thread::sleep_for(chrono::seconds(1)); // Delay for 1 second
                 cout << "It is now way past midnight, there is no way anyone will be here at this hour, just grab the papers a go..." << endl;
                 this_thread::sleep_for(chrono::seconds(2)); // Delay for 2 second
                 cout << "\"Hey! What are you doing in my office!!!\"" << endl;
