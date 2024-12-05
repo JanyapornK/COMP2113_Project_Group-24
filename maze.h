@@ -8,7 +8,7 @@ using namespace std;
 class Maze {
 public:
   Maze(int scenario);           // Constructor to load a fixed maze
-  void play();                                  // Maze gameplay                             
+  bool play();                                  // Maze gameplay                             
   void displayMaze() const;                     // Display the current maze
   bool move(char direction);                    // Move the player (w, a, s, d)
   bool isExitReached() const;                   // Check if the player has reached the exit
