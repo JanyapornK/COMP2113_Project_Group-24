@@ -37,7 +37,8 @@ Please note that this project is made for entertainment and educational purposes
 N/A
 
 ## Compilation and execution instructions:
-
+For compilation, please type the command "make" in the terminal.
+Then type "./game" to execute the program. 
 
 
 
