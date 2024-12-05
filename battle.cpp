@@ -87,14 +87,12 @@ void ATTACK_O(character& opponent, character* player)
         cout << "BONUS DAMAGE" << endl;
         Damage += Dice;
     }
-    if (Damage > 0)
-    {
+    if (Damage > 0) {
         player->setHealth(player->getHealth() - Damage);
         cout << "You have suffered damage! Damage received: " << Damage << endl;
         cout << "Your HP = " << player->getHealth() << endl;
     }
-    else
-    {
+    else {
         cout << "Opponent's attack failed, zero damage received." << endl;
         cout << "Your HP = " << player->getHealth() << endl;
     }
@@ -239,4 +237,5 @@ bool BATTLE_RESULT(character* player, character& opponent)
     {
         cout << "You won the battle!" << endl;
         return true;
+}
 }
