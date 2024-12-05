@@ -17,21 +17,6 @@ string upperToLower(string &word){
     return word;
 }
 
-int findIndex(string input, string name[]){
-    int roomIndex = -1;
-      for (int i = 0; i < places.size(); i++)
-      {
-        string roomname = places[i].name;
-        roomname=upperToLower(roomname);
-        if (roomname == input)
-        {
-          roomIndex = i;
-          break;
-        }
-  }
-  return roomIndex;
-}
-
 void printChoices(const vector <Room> places){
   cout<<"Where are the keys...?"<<endl;
   cout<<"Where would you go? (Enter the place)";
@@ -139,7 +124,16 @@ int Rmain(character *playerCharacter){
     }
     else
     {
-      int roomIndex=findIndex(input,name);
+      int roomIndex = -1;
+      for (int i = 0; i < places.size(); i++)
+      {
+        string roomname = places[i].name;
+        transform(roomname.begin(), roomname.end(), roomname.begin(), tolower());
+        if (roomname == input)
+        {
+          roomIndex = i;
+          break;
+        }
       }
   
       if (roomIndex == -1)
