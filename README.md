@@ -20,7 +20,7 @@ We have collectively decided to code an RPG adventure video game. The game's pre
 Please note that this project is made for entertainment and educational purposes only, and the creators do not condone such behaviour.
 
 ## Features fulfilling coding requirements:
-**Generation of random:** Create random seed to roll the dice, determining battle outcomes and the overall cornerstone for the project
+**Generation of random events:** Create random seed to roll the dice, determining battle outcomes and the overall cornerstone for the project
   
 **Data structures for storing data:** Define a class to store the character status
 
@@ -30,7 +30,9 @@ Please note that this project is made for entertainment and educational purposes
 
 **Program codes in multiple files:** main.cpp character.cpp room.cpp battle.cpp maze.cpp, etc
 
-**Tech used:** C++ and makefile
+**Proper indentations and naming styles:** Consistent indentations throughout all programs and easy-to-read function names
+
+**In-code documentation:** Comments throughout the codes for each other to read easily
 
 
 ## List of non-standard C/C++ libaries if any
